@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -21,6 +22,14 @@ namespace Boulder_Pusher.GameObject
     {
         public double LocationX { get; set; }
         public double LocationY { get; set; }
+
+        // Relay Terrain Position to Canvas
+        public void UpdatePosition()
+        {
+            Debug.WriteLine("Boulder loc: " + Canvas.LeftProperty + " " + Canvas.TopProperty);
+            SetValue(Canvas.LeftProperty, LocationX);
+            SetValue(Canvas.TopProperty, LocationY);
+        }
         public Terrain()
         {
             this.InitializeComponent();

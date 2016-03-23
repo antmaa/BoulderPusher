@@ -24,9 +24,16 @@ namespace Boulder_Pusher
     public sealed partial class MainPage : Page
     {
         // GameObjects
-        private GameObject.Player player;
-        private GameObject.Boulder boulder;
-        private GameObject.Terrain terrain;
+        public GameObject.Player player;
+        public GameObject.Boulder boulder;
+        public GameObject.Terrain terrain;
+        public GameObject.Wall wall;
+        public GameObject.Floor floor;
+        public List<GameObject.Wall> walls;
+        public List<GameObject.Floor> floors;
+
+        // X & Y Coordinates for canvas
+        private int x = 0, y = 0;
 
         // Canvas values
         private double CanvasWidth = 550;
@@ -65,11 +72,42 @@ namespace Boulder_Pusher
             };
 
             // Printing the Floor&Walls onto the Canvas
-            for (int x = 0; x == 11; x++)
+            for (; x == 11; x++)
             {
+                // Walls X
+                if (x == 0 || x == 11)
+                {
+                    wall = new GameObject.Wall { LocationX = (CanvasHeight / 11) * x, LocationY = (CanvasHeight / 11) * y };
+                    walls.Add(wall);
+                    Grid.Children.Add(wall);
+                    wall.UpdatePosition();
+                } else
+                {
+                    floor = new GameObject.Floor { LocationX = (CanvasHeight / 11) * x, LocationY = (CanvasHeight / 11) * y };
+                    floors.Add(floor);
+                    Grid.Children.Add(floor);
+                    floor.UpdatePosition();
+                }
+
                 for (int y = 0; y == 11; y++)
                 {
+                    // Walls Y
+                    if (y == 0 || y == 11)
+                    {
+                        wall = new GameObject.Wall { LocationY = (CanvasHeight / 11) * y, LocationX = (CanvasHeight / 11) * x };
+                        walls.Add(wall);
+                        Grid.Children.Add(wall);
+                        wall.UpdatePosition();
+                    } else
+                    {
+                        floor = new GameObject.Floor { LocationY = (CanvasHeight / 11) * y, LocationX = (CanvasHeight / 11) * x };
+                        floors.Add(floor);
+                        Grid.Children.Add(floor);
+                        floor.UpdatePosition();
+                    }
 
+                    // Reset y Value
+                    if (y == 11) { y = 0; }
                 }
             }
         }
