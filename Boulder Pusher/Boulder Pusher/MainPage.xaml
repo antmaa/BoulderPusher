@@ -19,15 +19,24 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="BoulderPusher" Text="Boulder Pusher" Grid.Column="0" Grid.Row="0" Height="auto" Width="auto" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            
+            <TextBlock x:Name="BoulderPusher"
+                       Text="Boulder Pusher"
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       Height="auto"
+                       Width="auto"
+                       Foreground="Blue"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
 
             <Canvas x:Name="Grid" 
-                    VerticalAlignment="Center" 
+                    VerticalAlignment="Top" 
                     HorizontalAlignment="Center" 
-                    Grid.Row="2" 
+                    Grid.Row="3" 
                     Grid.Column="0" 
-                    Width="500" 
-                    Height="500"/>
+                    Width="550" 
+                    Height="550"/>
         </Grid>
     </Grid>
 </Page>
