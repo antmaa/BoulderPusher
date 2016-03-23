@@ -104,8 +104,8 @@
     <Compile Include="GameObject\Player.xaml.cs">
       <DependentUpon>Player.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GameObject\Wall.xaml.cs">
-      <DependentUpon>Wall.xaml</DependentUpon>
+    <Compile Include="GameObject\Terrain.xaml.cs">
+      <DependentUpon>Terrain.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -146,7 +146,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GameObject\Wall.xaml">
+    <Page Include="GameObject\Terrain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

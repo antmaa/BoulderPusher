@@ -19,6 +19,9 @@ namespace Boulder_Pusher.GameObject
 {
     public sealed partial class Boulder : UserControl
     {
+        public double LocationX { get; set; }
+        public double LocationY { get; set; }
+
         public Boulder()
         {
             this.InitializeComponent();

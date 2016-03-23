@@ -28,7 +28,7 @@
                        Width="auto"
                        Foreground="Blue"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
+                       VerticalAlignment="Center" FontSize="24"/>
 
             <Canvas x:Name="Grid" 
                     VerticalAlignment="Top" 

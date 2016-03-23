@@ -17,9 +17,11 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Boulder_Pusher.GameObject
 {
-    public sealed partial class Wall : UserControl
+    public sealed partial class Terrain : UserControl
     {
-        public Wall()
+        public double LocationX { get; set; }
+        public double LocationY { get; set; }
+        public Terrain()
         {
             this.InitializeComponent();
         }
