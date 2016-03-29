@@ -126,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Sprites\Boulder.png" />
+    <Content Include="Assets\Sprites\canvas.png" />
     <Content Include="Assets\Sprites\Dude.png" />
     <Content Include="Assets\Sprites\Floor.png" />
     <Content Include="Assets\Sprites\Terrain.png" />
