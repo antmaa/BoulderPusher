@@ -98,8 +98,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Game.cs" />
     <Compile Include="GameObject\Boulder.xaml.cs">
       <DependentUpon>Boulder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameObject\Exit.xaml.cs">
+      <DependentUpon>Exit.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameObject\Floor.xaml.cs">
       <DependentUpon>Floor.xaml</DependentUpon>
@@ -127,6 +131,7 @@
   <ItemGroup>
     <Content Include="Assets\Sprites\Boulder.png" />
     <Content Include="Assets\Sprites\Dude.png" />
+    <Content Include="Assets\Sprites\Exit.png" />
     <Content Include="Assets\Sprites\Floor.png" />
     <Content Include="Assets\Sprites\Terrain.png" />
     <Content Include="Assets\Sprites\Wall.png" />
@@ -145,6 +150,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="GameObject\Boulder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameObject\Exit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

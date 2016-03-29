@@ -18,25 +18,17 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Boulder_Pusher.GameObject
 {
-    public sealed partial class Boulder : UserControl
+    public sealed partial class Exit : UserControl
     {
         public double LocationX { get; set; }
         public double LocationY { get; set; }
 
-        // Relay Boulder Position to Canvas
+        // Relay Terrain Position to Canvas
         public void UpdatePosition()
         {
-            Debug.WriteLine("Boulder loc: " + Canvas.LeftProperty + " " + Canvas.TopProperty);
+            Debug.WriteLine("Exit loc: " + Canvas.LeftProperty + " " + Canvas.TopProperty);
             SetValue(Canvas.LeftProperty, LocationX);
             SetValue(Canvas.TopProperty, LocationY);
-        }
-
-        public Boulder()
-        {
-            this.InitializeComponent();
-
-            Width = 50;
-            Height = 50;
         }
     }
 }

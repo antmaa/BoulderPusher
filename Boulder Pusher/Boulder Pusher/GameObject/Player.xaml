@@ -10,7 +10,9 @@
     d:DesignWidth="50">
 
     <Grid>
-        <Rectangle Width="50" Height="50">
+        <Rectangle x:Name="player"
+                   Width="50"
+                   Height="50">
             <Rectangle.Fill>
                 <ImageBrush
                     ImageSource="\Assets\Sprites\Dude.png"
