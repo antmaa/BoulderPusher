@@ -40,15 +40,16 @@ namespace Boulder_Pusher
                 { 4,0,2,0,2,0,0,2,0,0,4 },
                 { 4,0,0,0,0,0,0,0,0,0,4 },
                 { 4,0,0,0,0,0,0,0,0,0,4 },
+                { 4,0,0,0,0,0,0,0,0,0,4 },
                 { 4,0,0,0,0,1,0,0,0,0,4 },
                 { 4,4,4,4,4,4,4,4,4,4,4 }
             };
             int i = 0;
             int j = 0;
 
-            for (; i <= 11; i++)
+            for (; j <= 11; j++)
             {
-                for (;j <= 11; j++)
+                for (;i <= 11; i++)
                 {
                     // Block position
                     int x = (50) * i; // 0, 50, 100...
@@ -107,10 +108,10 @@ namespace Boulder_Pusher
                     }
 
                     // Start a new row?
-                    if (j == 11)
+                    if (i == 11)
                     {
-                        j = 0;
-                        i++;
+                        i = 0;
+                        j++;
                     }
 
                     // if 0, generate nothing
