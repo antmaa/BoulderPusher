@@ -132,8 +132,8 @@
     <None Include="Boulder Pusher_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\BPTheme.wav" />
     <Content Include="Assets\Sprites\Boulder.png" />
-    <Content Include="Assets\Sprites\BPTheme.wav" />
     <Content Include="Assets\Sprites\canvas.png" />
     <Content Include="Assets\Sprites\Dude.png" />
     <Content Include="Assets\Sprites\Exit.png" />
