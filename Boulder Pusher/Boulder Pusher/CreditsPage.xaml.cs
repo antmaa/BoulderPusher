@@ -14,21 +14,20 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Boulder_Pusher
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class CreditsPage : Page
     {
-
         // Canvas values
         private double CanvasWidth = 550;
         private double CanvasHeight = 550;
 
-        public MainPage()
+        public CreditsPage()
         {
             this.InitializeComponent();
 
@@ -42,21 +41,17 @@ namespace Boulder_Pusher
             CanvasHeight = MyCanvas.Height;
         }
 
-        private void PlayButton_Click(object sender, RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            // navigate to GamePage
-            this.Frame.Navigate(typeof(GamePage));
+            // get root frame (which show pages)
+            Frame rootFrame = Window.Current.Content as Frame;
+            // did we get it correctly
+            if (rootFrame == null) return;
+            // navigate back if possible
+            if (rootFrame.CanGoBack)
+            {
+                rootFrame.GoBack();
+            }
         }
-
-        private void CreditsButton_Click(object sender, RoutedEventArgs e)
-        {
-            // navigate to CreditsPage
-            this.Frame.Navigate(typeof(CreditsPage));
-        }
-
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Exit();
-        }        
     }
 }
