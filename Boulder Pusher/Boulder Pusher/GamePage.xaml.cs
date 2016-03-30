@@ -14,21 +14,29 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Boulder_Pusher
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class GamePage : Page
     {
-
         // Canvas values
         private double CanvasWidth = 550;
         private double CanvasHeight = 550;
 
-        public MainPage()
+        // Control Booleans
+        private bool UpPressed;
+        private bool LeftPressed;
+        private bool RightPressed;
+        private bool DownPressed;
+
+        // Game
+        private Game game;
+
+        public GamePage()
         {
             this.InitializeComponent();
 
@@ -40,22 +48,10 @@ namespace Boulder_Pusher
             // Used in Ball and Paddle
             CanvasWidth = MyCanvas.Width;
             CanvasHeight = MyCanvas.Height;
+
+            // Create a new game
+            game = new Game(MyCanvas);
+            game.StartGame();
         }
-
-        private void PlayButton_Click(object sender, RoutedEventArgs e)
-        {
-            // add and navigate to a new page
-            this.Frame.Navigate(typeof(GamePage));
-        }
-
-        private void CreditsButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }        
     }
 }

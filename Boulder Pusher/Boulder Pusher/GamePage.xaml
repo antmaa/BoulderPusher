@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="Boulder_Pusher.GamePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Boulder_Pusher"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Width="1280"
+    Height="720">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid x:Name="Game">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="BoulderPusher"
+                       Text="Boulder Pusher"
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       Height="auto"
+                       Width="auto"
+                       Foreground="Blue"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" FontSize="24"/>
+
+            <Canvas x:Name="MyCanvas" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Center" 
+                    Grid.Row="3" 
+                    Grid.Column="0" 
+                    Width="550"
+                    Height="550"/>
+        </Grid>
+
+    </Grid>
+</Page>
