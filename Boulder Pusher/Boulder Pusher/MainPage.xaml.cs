@@ -28,12 +28,6 @@ namespace Boulder_Pusher
         private double CanvasWidth = 550;
         private double CanvasHeight = 550;
 
-        // Control Booleans
-        private bool UpPressed;
-        private bool LeftPressed;
-        private bool RightPressed;
-        private bool DownPressed;
-
         // Game
         private Game game;
 

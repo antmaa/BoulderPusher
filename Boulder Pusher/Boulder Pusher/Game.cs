@@ -17,6 +17,19 @@ namespace Boulder_Pusher
         // Canvas
         private Canvas canvas;
 
+        // Game Objects
+        GameObject.Player player;
+        GameObject.Boulder boulder;
+        GameObject.Terrain terrain;
+        GameObject.Wall wall;
+        GameObject.Exit exit;
+
+        // Control Booleans
+        private bool UpPressed;
+        private bool LeftPressed;
+        private bool RightPressed;
+        private bool DownPressed;
+
         // List of GameObjects for map generation: 0=Empty, 1=player, 2=Boulder, 3=terrain...
         //public List<int>[,] pBT; pBT = playerBoulderTerrain
 
@@ -56,7 +69,7 @@ namespace Boulder_Pusher
                     // What to generate?
                     if (pBT[j, i] == 1) // Player
                     {
-                        GameObject.Player player = new GameObject.Player
+                        player = new GameObject.Player
                         {
                             LocationX = x,
                             LocationY = y
@@ -66,7 +79,7 @@ namespace Boulder_Pusher
                     }
                     else if (pBT[j, i] == 2) // Boulder
                     {
-                        GameObject.Boulder boulder = new GameObject.Boulder
+                        boulder = new GameObject.Boulder
                         {
                             LocationX = x,
                             LocationY = y
@@ -76,7 +89,7 @@ namespace Boulder_Pusher
                     }
                     else if (pBT[j, i] == 3) // Terrain
                     {
-                        GameObject.Terrain terrain = new GameObject.Terrain
+                        terrain = new GameObject.Terrain
                         {
                             LocationX = x,
                             LocationY = y
@@ -86,7 +99,7 @@ namespace Boulder_Pusher
                     }
                     else if (pBT[j, i] == 4) // Wall
                     {
-                        GameObject.Wall wall = new GameObject.Wall
+                        wall = new GameObject.Wall
                         {
                             LocationX = x,
                             LocationY = y
@@ -96,7 +109,7 @@ namespace Boulder_Pusher
                     }
                     else if (pBT[j, i] == 5) // Exit
                     {
-                        GameObject.Exit exit = new GameObject.Exit
+                        exit = new GameObject.Exit
                         {
                             LocationX = x,
                             LocationY = y
@@ -122,6 +135,23 @@ namespace Boulder_Pusher
             Debug.WriteLine("Game");
             // Include player and boulder movement later!!!                      <---------------------------
             CreatePBT();
+            if (UpPressed == true)
+            {
+                player.MoveX(-1);
+            }
+            if (DownPressed == true)
+            {
+                player.MoveX(1);
+            }
+            if (LeftPressed == true)
+            {
+                player.MoveY(-1);
+            }
+            if (RightPressed == true)
+            {
+                player.MoveY(1);
+            }
+
         }
 
         // Game loop
