@@ -34,6 +34,33 @@ namespace Boulder_Pusher
         private bool RightPressed;
         private bool DownPressed;
 
+        // Movement initialisation
+        private void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
+        {
+            switch (args.VirtualKey)
+            {
+                case Windows.System.VirtualKey.Up:
+                    UpPressed = true;
+                    Debug.WriteLine("Up pressed!");
+                    break;
+
+                case Windows.System.VirtualKey.Left:
+                    LeftPressed = true;
+                    break;
+
+                case Windows.System.VirtualKey.Right:
+                    RightPressed = true;
+                    break;
+
+                case Windows.System.VirtualKey.Down:
+                    DownPressed = true;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
         public int[,] pBT =
             {
                 { 4,4,4,4,4,5,4,4,4,4,4 },
