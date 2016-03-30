@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -23,6 +24,9 @@ namespace Boulder_Pusher
         GameObject.Terrain terrain;
         GameObject.Wall wall;
         GameObject.Exit exit;
+
+        // Audio
+        public MediaElement bPTheme;
 
         // Control Booleans
         private bool UpPressed;
@@ -53,6 +57,7 @@ namespace Boulder_Pusher
         {
             this.canvas = canvas;
             CreatePBT();
+            LoadAudio();
         }
 
         // Print level
@@ -154,6 +159,20 @@ namespace Boulder_Pusher
                 player.MoveY(1);
             }
 
+        }
+
+        // Load Audio
+        public async void LoadAudio()
+        {
+            bPTheme = new MediaElement();
+            bPTheme.IsLooping = true;
+            bPTheme.AutoPlay = true;
+            StorageFolder folder =
+                await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
+            StorageFile file =
+                await folder.GetFileAsync("BPTheme.wav");
+            var stream = await file.OpenAsync(FileAccessMode.Read);
+            bPTheme.SetSource(stream, file.ContentType);
         }
 
         // Game loop
