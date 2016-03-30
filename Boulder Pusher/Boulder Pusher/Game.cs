@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -24,11 +25,41 @@ namespace Boulder_Pusher
         GameObject.Wall wall;
         GameObject.Exit exit;
 
+        // Audio
+        public MediaElement bPTheme;
+
         // Control Booleans
         private bool UpPressed;
         private bool LeftPressed;
         private bool RightPressed;
         private bool DownPressed;
+
+        // Movement initialisation
+        private void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
+        {
+            switch (args.VirtualKey)
+            {
+                case Windows.System.VirtualKey.Up:
+                    UpPressed = true;
+                    Debug.WriteLine("Up pressed!");
+                    break;
+
+                case Windows.System.VirtualKey.Left:
+                    LeftPressed = true;
+                    break;
+
+                case Windows.System.VirtualKey.Right:
+                    RightPressed = true;
+                    break;
+
+                case Windows.System.VirtualKey.Down:
+                    DownPressed = true;
+                    break;
+
+                default:
+                    break;
+            }
+        }
 
         public int[,] pBT =
             {
@@ -53,6 +84,7 @@ namespace Boulder_Pusher
         {
             this.canvas = canvas;
             CreatePBT();
+            LoadAudio();
         }
 
         // Print level
@@ -128,7 +160,7 @@ namespace Boulder_Pusher
         {
             timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
-            timer.Interval = new TimeSpan(0,1,0); // 60 fps
+            timer.Interval = new TimeSpan(0,0,0, 1000/60); // 60 fps
             timer.Start();
         }
 
@@ -139,7 +171,8 @@ namespace Boulder_Pusher
             CreatePBT();
             if (UpPressed == true)
             {
-                player.MoveUp(pBT);
+               pBT = player.MoveUp(pBT);
+                
             }
             if (DownPressed == true)
             {
@@ -154,6 +187,20 @@ namespace Boulder_Pusher
                 player.MoveY(1);
             }
 
+        }
+
+        // Load Audio
+        public async void LoadAudio()
+        {
+            bPTheme = new MediaElement();
+            bPTheme.IsLooping = true;
+            bPTheme.AutoPlay = true;
+            StorageFolder folder =
+                await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
+            StorageFile file =
+                await folder.GetFileAsync("BPTheme.wav");
+            var stream = await file.OpenAsync(FileAccessMode.Read);
+            bPTheme.SetSource(stream, file.ContentType);
         }
 
         // Game loop
