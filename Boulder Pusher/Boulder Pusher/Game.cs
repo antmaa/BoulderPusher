@@ -133,7 +133,7 @@ namespace Boulder_Pusher
         {
             timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
-            timer.Interval = new TimeSpan(0,1,0); // 60 fps
+            timer.Interval = new TimeSpan(0,0,0, 1000/60); // 60 fps
             timer.Start();
         }
 
@@ -144,7 +144,8 @@ namespace Boulder_Pusher
             CreatePBT();
             if (UpPressed == true)
             {
-                player.MoveUp(pBT);
+               pBT = player.MoveUp(pBT);
+                
             }
             if (DownPressed == true)
             {
