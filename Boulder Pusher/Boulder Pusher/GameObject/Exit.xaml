@@ -15,7 +15,8 @@
                    Height="50">
             <Rectangle.Fill>
                 <ImageBrush
-                    ImageSource="\Assets\Sprites\Exit.png"
+                    ImageSource="/Assets/Sprites/Exit.png"
+                    
                     Stretch="None"
                     AlignmentX="Left"
                     AlignmentY="Top"
