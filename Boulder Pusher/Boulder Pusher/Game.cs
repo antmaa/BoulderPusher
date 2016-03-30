@@ -60,6 +60,31 @@ namespace Boulder_Pusher
                     break;
             }
         }
+        private void CoreWindow_KeyUp(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
+        {
+            switch (args.VirtualKey)
+            {
+                case Windows.System.VirtualKey.Up:
+                    UpPressed = false;
+                    Debug.WriteLine("Up Released!");
+                    break;
+
+                case Windows.System.VirtualKey.Left:
+                    LeftPressed = false;
+                    break;
+
+                case Windows.System.VirtualKey.Right:
+                    RightPressed = false;
+                    break;
+
+                case Windows.System.VirtualKey.Down:
+                    DownPressed = false;
+                    break;
+
+                default:
+                    break;
+            }
+        }
 
         public int[,] pBT =
             {
@@ -85,6 +110,11 @@ namespace Boulder_Pusher
             this.canvas = canvas;
             CreatePBT();
             LoadAudio();
+            StartGame();
+
+            // Key Listeners
+            Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
+            Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
         }
 
         // Print level
@@ -169,10 +199,10 @@ namespace Boulder_Pusher
             Debug.WriteLine("Game");
             // Include player and boulder movement later!!!                      <---------------------------
             CreatePBT();
+
             if (UpPressed == true)
             {
-               pBT = player.MoveUp(pBT);
-                
+                pBT = player.MoveUp(pBT);
             }
             if (DownPressed == true)
             {
@@ -180,11 +210,11 @@ namespace Boulder_Pusher
             }
             if (LeftPressed == true)
             {
-                player.MoveY(-1);
+                
             }
             if (RightPressed == true)
             {
-                player.MoveY(1);
+                
             }
 
         }
@@ -202,6 +232,7 @@ namespace Boulder_Pusher
             var stream = await file.OpenAsync(FileAccessMode.Read);
             bPTheme.SetSource(stream, file.ContentType);
         }
+       
 
         // Game loop
         /*private void Timer_Tick(object sender, object e)

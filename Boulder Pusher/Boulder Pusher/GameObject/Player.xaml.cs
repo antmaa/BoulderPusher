@@ -39,14 +39,14 @@ namespace Boulder_Pusher.GameObject
             Width = 50;
             Height = 50;
         }
-        
+
         public int a = 5;
         public int b = 9;
 
 
         public int[,] MoveUp( int[,] pBT)
-        {   int c;
-            int d;
+        {
+            int c;
             int e;
             
             c = b - 1;
@@ -66,6 +66,7 @@ namespace Boulder_Pusher.GameObject
                 
                 pBT[a, c] = 1;
             }
+
             return pBT;
 
 
