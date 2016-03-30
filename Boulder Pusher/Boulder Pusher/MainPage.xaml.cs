@@ -28,15 +28,6 @@ namespace Boulder_Pusher
         private double CanvasWidth = 550;
         private double CanvasHeight = 550;
 
-        // Control Booleans
-        private bool UpPressed;
-        private bool LeftPressed;
-        private bool RightPressed;
-        private bool DownPressed;
-
-        // Game
-        private Game game;
-
         public MainPage()
         {
             this.InitializeComponent();
@@ -49,10 +40,22 @@ namespace Boulder_Pusher
             // Used in Ball and Paddle
             CanvasWidth = MyCanvas.Width;
             CanvasHeight = MyCanvas.Height;
+        }
 
-            // Create a new game
-            game = new Game(MyCanvas);
-            game.StartGame();
-        }        
+        private void PlayButton_Click(object sender, RoutedEventArgs e)
+        {
+            // add and navigate to a new page
+            this.Frame.Navigate(typeof(GamePage));
+        }
+
+        private void CreditsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
