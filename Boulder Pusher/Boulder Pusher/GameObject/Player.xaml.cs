@@ -23,6 +23,7 @@ namespace Boulder_Pusher.GameObject
         public double LocationX { get; set; }
         public double LocationY { get; set; }
 
+
         // Relay Player Position to Canvas
         public void UpdatePosition()
         {
@@ -38,9 +39,36 @@ namespace Boulder_Pusher.GameObject
             Width = 50;
             Height = 50;
         }
+        
+        public int a = 5;
+        public int b = 9;
+        
 
-        public void MoveX(int v)
-        {
+        public void MoveUp( int[,] pBT)
+        {   int c;
+            int d;
+            int e;
+            int f;
+            pBT[a, b] = 1;
+            if (pBT[a,b] == 2)
+            {   c = b - 2;
+                e = b;
+                b = b - 1;
+                
+                pBT[a, b] = 1;
+                pBT[a, c] = 2;
+                pBT[a, e] = 0;
+
+            }
+            else if (pBT[a, b] == 0)
+            {
+                pBT[a, b] = 0;
+                b = b - 1;
+                pBT[a, b] = 1;
+            }
+
+
+
 
         }
         public void MoveY(int v)

@@ -30,20 +30,7 @@ namespace Boulder_Pusher
         private bool RightPressed;
         private bool DownPressed;
 
-        // List of GameObjects for map generation: 0=Empty, 1=player, 2=Boulder, 3=terrain...
-        //public List<int>[,] pBT; pBT = playerBoulderTerrain
-
-        // Constructor
-        public Game(Canvas canvas)
-        {
-            this.canvas = canvas;
-            CreatePBT();
-        }
-
-        // Print level
-        private void CreatePBT()
-        {
-            int[,] pBT =
+        public int[,] pBT =
             {
                 { 4,4,4,4,4,5,4,4,4,4,4 },
                 { 4,0,0,0,0,2,0,0,0,0,4 },
@@ -57,6 +44,21 @@ namespace Boulder_Pusher
                 { 4,0,0,0,0,1,0,0,0,0,4 },
                 { 4,4,4,4,4,4,4,4,4,4,4 }
             };
+
+        // List of GameObjects for map generation: 0=Empty, 1=player, 2=Boulder, 3=terrain...
+        //public List<int>[,] pBT; pBT = playerBoulderTerrain
+
+        // Constructor
+        public Game(Canvas canvas)
+        {
+            this.canvas = canvas;
+            CreatePBT();
+        }
+
+        // Print level
+        public void CreatePBT()
+        {
+            
 
             for (int i = 0; i <= 10; i++)
             {
@@ -137,11 +139,11 @@ namespace Boulder_Pusher
             CreatePBT();
             if (UpPressed == true)
             {
-                player.MoveX(-1);
+                player.MoveUp(pBT);
             }
             if (DownPressed == true)
             {
-                player.MoveX(1);
+                
             }
             if (LeftPressed == true)
             {
