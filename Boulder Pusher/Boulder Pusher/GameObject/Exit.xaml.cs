@@ -30,5 +30,13 @@ namespace Boulder_Pusher.GameObject
             SetValue(Canvas.LeftProperty, LocationX);
             SetValue(Canvas.TopProperty, LocationY);
         }
+        public Exit()
+        {
+            this.InitializeComponent();
+
+            Width = 50;
+            Height = 50;
+        }
     }
 }
+

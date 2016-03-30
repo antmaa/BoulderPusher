@@ -56,6 +56,6 @@ namespace Boulder_Pusher
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
 
-        }
+        }        
     }
 }

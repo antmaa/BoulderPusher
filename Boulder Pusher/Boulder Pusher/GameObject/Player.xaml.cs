@@ -38,5 +38,14 @@ namespace Boulder_Pusher.GameObject
             Width = 50;
             Height = 50;
         }
+
+        public void MoveX(int v)
+        {
+
+        }
+        public void MoveY(int v)
+        {
+
+        }
     }
 }
