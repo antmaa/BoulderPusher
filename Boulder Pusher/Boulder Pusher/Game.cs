@@ -33,30 +33,28 @@ namespace Boulder_Pusher
             int[,] pBT =
             {
                 { 4,4,4,4,4,5,4,4,4,4,4 },
-                { 4,0,0,0,0,3,0,0,0,0,4 },
+                { 4,0,0,0,0,2,0,0,0,0,4 },
                 { 4,0,0,0,0,0,0,0,0,0,4 },
-                { 4,0,2,0,2,0,0,2,0,0,4 },
-                { 4,0,2,2,2,0,0,2,0,0,4 },
-                { 4,0,2,0,2,0,0,2,0,0,4 },
+                { 4,0,3,0,3,0,0,3,0,0,4 },
+                { 4,0,3,3,3,0,0,3,0,0,4 },
+                { 4,0,3,0,3,0,0,3,0,0,4 },
                 { 4,0,0,0,0,0,0,0,0,0,4 },
                 { 4,0,0,0,0,0,0,0,0,0,4 },
                 { 4,0,0,0,0,0,0,0,0,0,4 },
                 { 4,0,0,0,0,1,0,0,0,0,4 },
                 { 4,4,4,4,4,4,4,4,4,4,4 }
             };
-            int i = 0;
-            int j = 0;
 
-            for (; j <= 11; j++)
+            for (int i = 0; i <= 10; i++)
             {
-                for (;i <= 11; i++)
+                for (int j = 0; j <= 10; j++)
                 {
                     // Block position
                     int x = (50) * i; // 0, 50, 100...
                     int y = (50) * j; // 0, 50, 100...
-
+                    Debug.WriteLine(i + " " + j);
                     // What to generate?
-                    if (pBT[i, j] == 1) // Player
+                    if (pBT[j, i] == 1) // Player
                     {
                         GameObject.Player player = new GameObject.Player
                         {
@@ -66,7 +64,7 @@ namespace Boulder_Pusher
                         canvas.Children.Add(player);
                         player.UpdatePosition();
                     }
-                    else if (pBT[i, j] == 2) // Boulder
+                    else if (pBT[j, i] == 2) // Boulder
                     {
                         GameObject.Boulder boulder = new GameObject.Boulder
                         {
@@ -76,7 +74,7 @@ namespace Boulder_Pusher
                         canvas.Children.Add(boulder);
                         boulder.UpdatePosition();
                     }
-                    else if (pBT[i, j] == 3) // Terrain
+                    else if (pBT[j, i] == 3) // Terrain
                     {
                         GameObject.Terrain terrain = new GameObject.Terrain
                         {
@@ -86,7 +84,7 @@ namespace Boulder_Pusher
                         canvas.Children.Add(terrain);
                         terrain.UpdatePosition();
                     }
-                    else if (pBT[i, j] == 4) // Wall
+                    else if (pBT[j, i] == 4) // Wall
                     {
                         GameObject.Wall wall = new GameObject.Wall
                         {
@@ -96,7 +94,7 @@ namespace Boulder_Pusher
                         canvas.Children.Add(wall);
                         wall.UpdatePosition();
                     }
-                    else if (pBT[i, j] == 5) // Exit
+                    else if (pBT[j, i] == 5) // Exit
                     {
                         GameObject.Exit exit = new GameObject.Exit
                         {
@@ -105,16 +103,7 @@ namespace Boulder_Pusher
                         };
                         canvas.Children.Add(exit);
                         exit.UpdatePosition();
-                    }
-
-                    // Start a new row?
-                    if (i == 11)
-                    {
-                        i = 0;
-                        j++;
-                    }
-
-                    // if 0, generate nothing
+                    }// if 0, generate nothing
                 }
             }
         }
