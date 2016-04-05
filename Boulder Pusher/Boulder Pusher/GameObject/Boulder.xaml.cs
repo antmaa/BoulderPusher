@@ -23,6 +23,9 @@ namespace Boulder_Pusher.GameObject
         public double LocationX { get; set; }
         public double LocationY { get; set; }
 
+        public int X { get; set; }
+        public int Y { get; set; }
+
         // Relay Boulder Position to Canvas
         public void UpdatePosition()
         {
