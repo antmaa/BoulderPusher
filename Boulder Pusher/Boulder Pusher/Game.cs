@@ -24,15 +24,10 @@ namespace Boulder_Pusher
         GameObject.Terrain terrain;
         GameObject.Wall wall;
         GameObject.Exit exit;
+        List<UserControl> Entities = new List<UserControl>();
 
         // Audio
         public MediaElement bPTheme;
-
-        // Control Booleans
-        private bool UpPressed;
-        private bool LeftPressed;
-        private bool RightPressed;
-        private bool DownPressed;
 
         // Movement initialisation
         private void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
@@ -40,20 +35,17 @@ namespace Boulder_Pusher
             switch (args.VirtualKey)
             {
                 case Windows.System.VirtualKey.Up:
-                    UpPressed = true;
                     Debug.WriteLine("Up pressed!");
+                    player.MoveUp();
                     break;
 
                 case Windows.System.VirtualKey.Left:
-                    LeftPressed = true;
                     break;
 
                 case Windows.System.VirtualKey.Right:
-                    RightPressed = true;
                     break;
 
                 case Windows.System.VirtualKey.Down:
-                    DownPressed = true;
                     break;
 
                 default:
@@ -65,26 +57,24 @@ namespace Boulder_Pusher
             switch (args.VirtualKey)
             {
                 case Windows.System.VirtualKey.Up:
-                    UpPressed = false;
                     Debug.WriteLine("Up Released!");
                     break;
 
                 case Windows.System.VirtualKey.Left:
-                    LeftPressed = false;
                     break;
 
                 case Windows.System.VirtualKey.Right:
-                    RightPressed = false;
                     break;
 
                 case Windows.System.VirtualKey.Down:
-                    DownPressed = false;
                     break;
 
                 default:
                     break;
             }
         }
+
+
 
         public int[,] pBT =
             {
@@ -110,7 +100,7 @@ namespace Boulder_Pusher
             this.canvas = canvas;
             CreatePBT();
             LoadAudio();
-            StartGame();
+            //StartGame();
 
             // Key Listeners
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
@@ -120,7 +110,7 @@ namespace Boulder_Pusher
         // Print level
         public void CreatePBT()
         {
-            
+
 
             for (int i = 0; i <= 10; i++)
             {
@@ -129,16 +119,18 @@ namespace Boulder_Pusher
                     // Block position
                     int x = (50) * i; // 0, 50, 100...
                     int y = (50) * j; // 0, 50, 100...
-                    Debug.WriteLine(i + " " + j);
                     // What to generate?
                     if (pBT[j, i] == 1) // Player
                     {
                         player = new GameObject.Player
                         {
                             LocationX = x,
-                            LocationY = y
+                            LocationY = y,
+                            X = i,
+                            Y = j
                         };
                         canvas.Children.Add(player);
+                        Entities.Add(player);
                         player.UpdatePosition();
                     }
                     else if (pBT[j, i] == 2) // Boulder
@@ -146,9 +138,12 @@ namespace Boulder_Pusher
                         boulder = new GameObject.Boulder
                         {
                             LocationX = x,
-                            LocationY = y
+                            LocationY = y,
+                            X = i,
+                            Y = j
                         };
                         canvas.Children.Add(boulder);
+                        Entities.Add(boulder);
                         boulder.UpdatePosition();
                     }
                     else if (pBT[j, i] == 3) // Terrain
@@ -156,9 +151,12 @@ namespace Boulder_Pusher
                         terrain = new GameObject.Terrain
                         {
                             LocationX = x,
-                            LocationY = y
+                            LocationY = y,
+                            X = i,
+                            Y = j
                         };
                         canvas.Children.Add(terrain);
+                        Entities.Add(terrain);
                         terrain.UpdatePosition();
                     }
                     else if (pBT[j, i] == 4) // Wall
@@ -166,9 +164,12 @@ namespace Boulder_Pusher
                         wall = new GameObject.Wall
                         {
                             LocationX = x,
-                            LocationY = y
+                            LocationY = y,
+                            X = i,
+                            Y = j
                         };
                         canvas.Children.Add(wall);
+                        Entities.Add(wall);
                         wall.UpdatePosition();
                     }
                     else if (pBT[j, i] == 5) // Exit
@@ -176,9 +177,12 @@ namespace Boulder_Pusher
                         exit = new GameObject.Exit
                         {
                             LocationX = x,
-                            LocationY = y
+                            LocationY = y,
+                            X = i,
+                            Y = j
                         };
                         canvas.Children.Add(exit);
+                        Entities.Add(exit);
                         exit.UpdatePosition();
                     }// if 0, generate nothing
                 }
@@ -186,38 +190,21 @@ namespace Boulder_Pusher
         }
 
         // Start game
-        public void StartGame()
+        /*public void StartGame()
         {
-            timer = new DispatcherTimer();
-            timer.Tick += Timer_Tick;
-            timer.Interval = new TimeSpan(0,0,0, 1000/60); // 60 fps
-            timer.Start();
-        }
+            while(true)
+            {
+                if (UpPressed) player.MoveUp();
 
-        private void Timer_Tick(object sender, object e)
-        {
-            Debug.WriteLine("Game");
-            // Include player and boulder movement later!!!                      <---------------------------
-            CreatePBT();
+                if (DownPressed) player.MoveDown();
 
-            if (UpPressed == true)
-            {
-                pBT = player.MoveUp(pBT);
-            }
-            if (DownPressed == true)
-            {
-                
-            }
-            if (LeftPressed == true)
-            {
-                
-            }
-            if (RightPressed == true)
-            {
-                
-            }
+                if (LeftPressed) player.MoveLeft();
 
-        }
+                if (RightPressed) player.MoveRight();
+
+                await player.UpdatePosition();
+            }
+        }*/
 
         // Load Audio
         public async void LoadAudio()
@@ -232,74 +219,8 @@ namespace Boulder_Pusher
             var stream = await file.OpenAsync(FileAccessMode.Read);
             bPTheme.SetSource(stream, file.ContentType);
         }
-       
 
-        // Game loop
-        /*private void Timer_Tick(object sender, object e)
-        {
-            Debug.WriteLine("Game");
-            ball.Move();
-            CheckCollision();
-            IsGameOver();
-        }*/
 
-        // Game Over
-        /*private void IsGameOver()
-        {
-            // All blocks rekt
-            if (blocks.Count == 0)
-            {
-                Debug.WriteLine("Game over - Good job!");
-                timer.Stop();
-            }
-            // Ball below paddle
-            if (ball.LocationY > paddle.LocationY)
-            {
-                Debug.WriteLine("Game over - Better luck next time!");
-                timer.Stop();
-            }
-        }*/
 
-        /*private void CheckCollision()
-        {
-            // Ball and paddle
-            Rect rect = ball.GetRect();
-            rect.Intersect(paddle.GetRect());
-            if (!rect.IsEmpty)
-            {
-                // Paddle 100 px
-                // ball position 0-100
-                double ballPosition = ball.LocationX - paddle.LocationX;
-                // -0.5 <-> 0.5
-                double hitPercent = (ballPosition / paddle.Width) - 0.5;
-                // Set ball speed
-                ball.SetSpeed(hitPercent);
-            }
-
-            // Ball and blocks
-            foreach (Block block in blocks)
-            {
-                Rect ballRect = ball.GetRect();
-                ballRect.Intersect(block.GetRect());
-                if (!ballRect.IsEmpty)
-                {
-                    // Remove block from list-collection
-                    blocks.Remove(block);
-                    // Remove from canvas
-                    canvas.Children.Remove(block);
-                    // Ball SpeedX and SpeedY?
-                    double ballCenter = ball.LocationX + (ball.Width / 2);
-                    if (ballCenter < block.LocationX || ballCenter > block.LocationX + block.Width)
-                    {
-                        ball.SpeedX *= -1;
-                    }
-                    else
-                    {
-                        ball.SpeedY *= -1;
-                    }
-                    break;
-                }
-            }
-        }*/
     }
 }
