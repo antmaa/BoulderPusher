@@ -51,7 +51,7 @@ namespace Boulder_Pusher
 
             // Create a new game
             game = new Game(MyCanvas);
-            game.StartGame();
+            //game.StartGame();
         }
     }
 }

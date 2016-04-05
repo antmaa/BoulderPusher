@@ -51,17 +51,23 @@ namespace Boulder_Pusher.GameObject
 
         public void MoveDown()
         {
-
+            Y++;
+            LocationY = (Y + 1) * 50;
+            UpdatePosition();
 
         }
         public void MoveLeft()
         {
-
+            X--;
+            LocationX = (X + 1) * 50;
+            UpdatePosition();
 
         }
         public void MoveRight()
         {
-
+            X++;
+            LocationX = (X + 1) * 50;
+            UpdatePosition();
 
         }
     }

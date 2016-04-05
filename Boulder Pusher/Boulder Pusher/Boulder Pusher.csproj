@@ -142,6 +142,9 @@
     <Content Include="Assets\Sprites\Exit.png" />
     <Content Include="Assets\Sprites\Floor.png" />
     <Content Include="Assets\Sprites\Knight_BACK.png" />
+    <Content Include="Assets\Sprites\Knight_FRONT.png" />
+    <Content Include="Assets\Sprites\Knight_LEFT.png" />
+    <Content Include="Assets\Sprites\Knight_RIGHT.png" />
     <Content Include="Assets\Sprites\Terrain.png" />
     <Content Include="Assets\Sprites\Wall.png" />
     <Content Include="Properties\Default.rd.xml" />

@@ -40,12 +40,16 @@ namespace Boulder_Pusher
                     break;
 
                 case Windows.System.VirtualKey.Left:
+                    player.MoveLeft();
                     break;
 
                 case Windows.System.VirtualKey.Right:
+                    player.MoveRight();
+                    
                     break;
 
                 case Windows.System.VirtualKey.Down:
+                    player.MoveDown();
                     break;
 
                 default:
