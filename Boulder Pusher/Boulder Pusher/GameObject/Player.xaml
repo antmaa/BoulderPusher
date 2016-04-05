@@ -15,7 +15,7 @@
                    Height="50">
             <Rectangle.Fill>
                 <ImageBrush
-                    ImageSource="/Assets/Sprites/Dude.png"
+                    ImageSource="/Assets/Sprites/Knight_BACK.png"
                     
                     Stretch="None"
                     AlignmentX="Left"
