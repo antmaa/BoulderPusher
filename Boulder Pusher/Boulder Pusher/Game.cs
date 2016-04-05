@@ -29,6 +29,9 @@ namespace Boulder_Pusher
         // Audio
         public MediaElement bPTheme;
 
+        // Debug timer
+        DispatcherTimer debtim;
+
         // Movement initialisation
         private void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
         {
@@ -104,11 +107,20 @@ namespace Boulder_Pusher
             this.canvas = canvas;
             CreatePBT();
             LoadAudio();
+            debtim = new DispatcherTimer();
             //StartGame();
+            debtim.Tick += Debtim_Tick;
+            debtim.Interval = new TimeSpan(0,0,0,1);
+            debtim.Start();
 
             // Key Listeners
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
             Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
+        }
+
+        private void Debtim_Tick(object sender, object e)
+        {
+            Debug.WriteLine(player.X + " " + player.Y);
         }
 
         // Print level

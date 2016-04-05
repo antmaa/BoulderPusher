@@ -45,28 +45,28 @@ namespace Boulder_Pusher.GameObject
         public void MoveUp()
         {
             Y--;
-            LocationY = (Y + 1) * 50;
+            LocationY = Y * 50;
             UpdatePosition();
         }
 
         public void MoveDown()
         {
             Y++;
-            LocationY = (Y + 1) * 50;
+            LocationY = Y * 50;
             UpdatePosition();
 
         }
         public void MoveLeft()
         {
             X--;
-            LocationX = (X + 1) * 50;
+            LocationX = X * 50;
             UpdatePosition();
 
         }
         public void MoveRight()
         {
             X++;
-            LocationX = (X + 1) * 50;
+            LocationX = X * 50;
             UpdatePosition();
 
         }
