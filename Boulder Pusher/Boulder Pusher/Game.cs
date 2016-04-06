@@ -12,9 +12,7 @@ namespace Boulder_Pusher
 {
     class Game
     {
-        // Timer
-        private DispatcherTimer timer;
-
+        // Constructor and the main variables ------------------------------------------------------
         // Canvas
         private Canvas canvas;
 
@@ -32,16 +30,128 @@ namespace Boulder_Pusher
         // Audio
         public MediaElement bPTheme;
 
-        // Debug timer
-        DispatcherTimer debtim;
+        // Constructor
+        public Game(Canvas canvas)
+        {
+            this.canvas = canvas;
+            CreatePBT();
+            LoadAudio();
 
-        // Movement initialisation
+            // Key Listeners
+            Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
+            Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
+        }
+
+        // Level creation --------------------------------------------------------------------------
+        // List of GameObjects for map generation: 0=Empty, 1=player, 2=Boulder, 3=terrain...
+        // pBT = playerBoulderTerrain
+        // Change level names later!!!
+        public int[,] pBT =
+            {
+                { 4,4,4,4,4,5,4,4,4,4,4 },
+                { 4,0,0,0,0,2,0,0,0,0,4 },
+                { 4,0,0,0,0,0,0,0,0,0,4 },
+                { 4,0,3,0,3,0,0,3,0,0,4 },
+                { 4,0,3,3,3,0,0,3,0,0,4 },
+                { 4,0,3,0,3,0,0,3,0,0,4 },
+                { 4,0,0,0,0,0,0,0,0,0,4 },
+                { 4,0,0,0,0,0,0,0,0,0,4 },
+                { 4,0,0,0,0,0,0,2,0,0,4 },
+                { 4,0,0,0,0,1,0,0,0,0,4 },
+                { 4,4,4,4,4,4,4,4,4,4,4 }
+            };
+
+        // Print level
+        // Checks what element is in the (i,j) coordinates of the level's 2D integer list
+        // Generates the appropriate entity
+        public void CreatePBT()
+        {
+            for (int i = 0; i <= 10; i++)
+            {
+                for (int j = 0; j <= 10; j++)
+                {
+                    // Block position
+                    int x = (50) * i; // 0, 50, 100...
+                    int y = (50) * j; // 0, 50, 100...
+                    // What to generate?
+                    if (pBT[j, i] == 1) // Generate Player
+                    {
+                        player = new GameObject.Player
+                        {
+                            LocationX = x,
+                            LocationY = y,
+                            X = i,
+                            Y = j
+                        };
+                        canvas.Children.Add(player);
+                        player.UpdatePosition();
+                    }
+                    else if (pBT[j, i] == 2) // Generate Boulder
+                    {
+                        boulder = new GameObject.Boulder
+                        {
+                            LocationX = x,
+                            LocationY = y,
+                            X = i,
+                            Y = j
+                        };
+                        canvas.Children.Add(boulder);
+                        Boulds.Add(boulder);
+                        boulder.UpdatePosition();
+                    }
+                    else if (pBT[j, i] == 3) // Generate Terrain
+                    {
+                        terrain = new GameObject.Terrain
+                        {
+                            LocationX = x,
+                            LocationY = y,
+                            X = i,
+                            Y = j
+                        };
+                        canvas.Children.Add(terrain);
+                        Terrs.Add(terrain);
+                        terrain.UpdatePosition();
+                    }
+                    else if (pBT[j, i] == 4) // Generate Wall
+                    {
+                        wall = new GameObject.Wall
+                        {
+                            LocationX = x,
+                            LocationY = y,
+                            X = i,
+                            Y = j
+                        };
+                        canvas.Children.Add(wall);
+                        Walls.Add(wall);
+                        wall.UpdatePosition();
+                    }
+                    else if (pBT[j, i] == 5) // Generate Exit
+                    {
+                        exit = new GameObject.Exit
+                        {
+                            LocationX = x,
+                            LocationY = y,
+                            X = i,
+                            Y = j
+                        };
+                        canvas.Children.Add(exit);
+                        Door.Add(exit);
+                        exit.UpdatePosition();
+                    }// if 0, generate nothing
+                }
+            }
+        }
+
+        // Movement --------------------------------------------------------------------------------
+        // Sends the player's different Move funktions the lists containing the other interactable objects (Walls, boulders etc...)
+        // The player entity then determines whether movement is possible
+        // After a move either succeeds or fails, the step counter will increase by one (to be implemented)
+        // When a key is pressed...
         private void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
         {
             switch (args.VirtualKey)
             {
                 case Windows.System.VirtualKey.Up:
-                    Debug.WriteLine("Up pressed!");
                     player.MoveUp(Boulds, Terrs, Walls, Door);
                     break;
 
@@ -62,12 +172,13 @@ namespace Boulder_Pusher
                     break;
             }
         }
+
+        // When a key is no longer pressed...
         private void CoreWindow_KeyUp(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
         {
             switch (args.VirtualKey)
             {
                 case Windows.System.VirtualKey.Up:
-                    Debug.WriteLine("Up Released!");
                     break;
 
                 case Windows.System.VirtualKey.Left:
@@ -83,130 +194,10 @@ namespace Boulder_Pusher
                     break;
             }
         }
-
-
-
-        public int[,] pBT =
-            {
-                { 4,4,4,4,4,5,4,4,4,4,4 },
-                { 4,0,0,0,0,2,0,0,0,0,4 },
-                { 4,0,0,0,0,0,0,0,0,0,4 },
-                { 4,0,3,0,3,0,0,3,0,0,4 },
-                { 4,0,3,3,3,0,0,3,0,0,4 },
-                { 4,0,3,0,3,0,0,3,0,0,4 },
-                { 4,0,0,0,0,0,0,0,0,0,4 },
-                { 4,0,0,0,0,0,0,0,0,0,4 },
-                { 4,0,0,0,0,0,0,0,0,0,4 },
-                { 4,0,0,0,0,1,0,0,0,0,4 },
-                { 4,4,4,4,4,4,4,4,4,4,4 }
-            };
-
-        // List of GameObjects for map generation: 0=Empty, 1=player, 2=Boulder, 3=terrain...
-        //public List<int>[,] pBT; pBT = playerBoulderTerrain
-
-        // Constructor
-        public Game(Canvas canvas)
-        {
-            this.canvas = canvas;
-            CreatePBT();
-            LoadAudio();
-            debtim = new DispatcherTimer();
-            //StartGame();
-            debtim.Tick += Debtim_Tick;
-            debtim.Interval = new TimeSpan(0,0,0,1);
-            debtim.Start();
-
-            // Key Listeners
-            Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
-            Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
-        }
-
-        private void Debtim_Tick(object sender, object e)
-        {
-            Debug.WriteLine(player.X + " " + player.Y);
-        }
-
-        // Print level
-        public void CreatePBT()
-        {
-
-
-            for (int i = 0; i <= 10; i++)
-            {
-                for (int j = 0; j <= 10; j++)
-                {
-                    // Block position
-                    int x = (50) * i; // 0, 50, 100...
-                    int y = (50) * j; // 0, 50, 100...
-                    // What to generate?
-                    if (pBT[j, i] == 1) // Player
-                    {
-                        player = new GameObject.Player
-                        {
-                            LocationX = x,
-                            LocationY = y,
-                            X = i,
-                            Y = j
-                        };
-                        canvas.Children.Add(player);
-                        player.UpdatePosition();
-                    }
-                    else if (pBT[j, i] == 2) // Boulder
-                    {
-                        boulder = new GameObject.Boulder
-                        {
-                            LocationX = x,
-                            LocationY = y,
-                            X = i,
-                            Y = j
-                        };
-                        canvas.Children.Add(boulder);
-                        Boulds.Add(boulder);
-                        boulder.UpdatePosition();
-                    }
-                    else if (pBT[j, i] == 3) // Terrain
-                    {
-                        terrain = new GameObject.Terrain
-                        {
-                            LocationX = x,
-                            LocationY = y,
-                            X = i,
-                            Y = j
-                        };
-                        canvas.Children.Add(terrain);
-                        Terrs.Add(terrain);
-                        terrain.UpdatePosition();
-                    }
-                    else if (pBT[j, i] == 4) // Wall
-                    {
-                        wall = new GameObject.Wall
-                        {
-                            LocationX = x,
-                            LocationY = y,
-                            X = i,
-                            Y = j
-                        };
-                        canvas.Children.Add(wall);
-                        Walls.Add(wall);
-                        wall.UpdatePosition();
-                    }
-                    else if (pBT[j, i] == 5) // Exit
-                    {
-                        exit = new GameObject.Exit
-                        {
-                            LocationX = x,
-                            LocationY = y,
-                            X = i,
-                            Y = j
-                        };
-                        canvas.Children.Add(exit);
-                        Door.Add(exit);
-                        exit.UpdatePosition();
-                    }// if 0, generate nothing
-                }
-            }
-        }
-        // Load Audio
+        
+        // -----------------------------------------------------------------------------------------
+        // Load Audio function
+        // Prepares the song and plays it on a loop
         public async void LoadAudio()
         {
             bPTheme = new MediaElement();
@@ -221,6 +212,9 @@ namespace Boulder_Pusher
         }
 
 
-
+        // End of class
     }
+
+
+    // End of namespace
 }

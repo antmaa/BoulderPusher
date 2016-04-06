@@ -44,18 +44,19 @@ namespace Boulder_Pusher
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            // navigate to GamePage
+            // Navigate to GamePage
             this.Frame.Navigate(typeof(GamePage));
         }
 
         private void CreditsButton_Click(object sender, RoutedEventArgs e)
         {
-            // navigate to CreditsPage
+            // Navigate to CreditsPage
             this.Frame.Navigate(typeof(CreditsPage));
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
+            // Exits the application
             Application.Current.Exit();
         }        
     }

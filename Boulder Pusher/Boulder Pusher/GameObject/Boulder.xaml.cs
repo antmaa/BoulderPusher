@@ -42,10 +42,12 @@ namespace Boulder_Pusher.GameObject
             Height = 50;
         }
 
-        public void Push(int X, int Y)
+        public void Push(int x, int y)
         {
-            LocationX = X * 50;
-            LocationY = Y * 50;
+            LocationX = x * 50;
+            LocationY = y * 50;
+            X = x;
+            Y = y;
             UpdatePosition();
         }
     }

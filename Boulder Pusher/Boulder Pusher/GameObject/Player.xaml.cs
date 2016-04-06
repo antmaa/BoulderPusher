@@ -20,23 +20,22 @@ namespace Boulder_Pusher.GameObject
 {
     public sealed partial class Player : UserControl
     {
+        // Player's location on the canvas (Example: 300px , 250px)
         public double LocationX { get; set; }
         public double LocationY { get; set; }
 
+        // Boolean used for determining possibility of movement
         private bool canMove;
 
+        // Player's location on the 2D Map used in level generation (Example: 2 , 6)
+        // Also used for calculating movement and collision
         public int X { get; set; }
         public int Y { get; set; }
 
         private int currentframe = 0;
         private int frameheight = 50;
-        // Relay Player Position to Canvas
-        public void UpdatePosition()
-        {
-            SetValue(Canvas.LeftProperty, LocationX);
-            SetValue(Canvas.TopProperty, LocationY);
-        }
 
+        // Constructor
         public Player()
         {
             this.InitializeComponent();
@@ -45,13 +44,22 @@ namespace Boulder_Pusher.GameObject
             Height = 50;
         }
 
-        // Move methods for the player. First checks the players
+        // Relays player position to canvas
+        public void UpdatePosition()
+        {
+            SetValue(Canvas.LeftProperty, LocationX);
+            SetValue(Canvas.TopProperty, LocationY);
+        }
 
-        public void MoveUp(
+        // Move methods for the player
+        // 
+        public void MoveUp
+            (
             List<GameObject.Boulder> boulds,
             List<GameObject.Terrain> terrs,
             List<GameObject.Wall> walls,
-            List<GameObject.Exit> door)
+            List<GameObject.Exit> door
+            )
         {
             canMove = MovePlayer(X, Y - 1, boulds, terrs, walls, door);
             if (canMove == true)
@@ -67,11 +75,13 @@ namespace Boulder_Pusher.GameObject
             }
         }
 
-        public void MoveDown(
+        public void MoveDown
+            (
             List<GameObject.Boulder> boulds,
             List<GameObject.Terrain> terrs,
             List<GameObject.Wall> walls,
-            List<GameObject.Exit> door)
+            List<GameObject.Exit> door
+            )
         {
             canMove = MovePlayer(X, Y + 1, boulds, terrs, walls, door);
             if (canMove == true)
@@ -87,11 +97,13 @@ namespace Boulder_Pusher.GameObject
                 return;
             }
         }
-        public void MoveLeft(
+        public void MoveLeft
+            (
             List<GameObject.Boulder> boulds,
             List<GameObject.Terrain> terrs,
             List<GameObject.Wall> walls,
-            List<GameObject.Exit> door)
+            List<GameObject.Exit> door
+            )
         {
             canMove = MovePlayer(X - 1, Y, boulds, terrs, walls, door);
             if (canMove == true)
@@ -107,13 +119,15 @@ namespace Boulder_Pusher.GameObject
                 return;
             }
         }
-        public void MoveRight(
+        public void MoveRight
+            (
             List<GameObject.Boulder> boulds,
             List<GameObject.Terrain> terrs,
             List<GameObject.Wall> walls,
-            List<GameObject.Exit> door)
+            List<GameObject.Exit> door
+            )
         {
-            canMove = MovePlayer(X +1 , Y, boulds, terrs, walls, door);
+            canMove = MovePlayer(X + 1, Y, boulds, terrs, walls, door);
             if (canMove == true)
             {
                 X++;
