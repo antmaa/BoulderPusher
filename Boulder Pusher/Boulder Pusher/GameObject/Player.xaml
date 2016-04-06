@@ -15,14 +15,19 @@
                    Height="50">
             <Rectangle.Fill>
                 <ImageBrush
-                    ImageSource="/Assets/Sprites/Knight_BACK.png"
+                    ImageSource="/Assets/Sprites/Knight_ALL.png"
                     
                     Stretch="None"
                     AlignmentX="Left"
                     AlignmentY="Top"
                     >
+                    <ImageBrush.Transform>
+                        <TranslateTransform x:Name="SpriteSheetOffset" />
+                    </ImageBrush.Transform>
                 </ImageBrush>
             </Rectangle.Fill>
+
+            
         </Rectangle>
     </Grid>
 </UserControl>

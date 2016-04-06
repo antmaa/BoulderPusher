@@ -24,7 +24,7 @@ namespace Boulder_Pusher
         GameObject.Terrain terrain;
         GameObject.Wall wall;
         GameObject.Exit exit;
-        List<UserControl> Entities = new List<UserControl>();
+        public static List<UserControl> Entities = new List<UserControl>();
 
         // Audio
         public MediaElement bPTheme;
@@ -43,16 +43,16 @@ namespace Boulder_Pusher
                     break;
 
                 case Windows.System.VirtualKey.Left:
-                    player.MoveLeft();
+                    player.MoveLeft(Entities);
                     break;
 
                 case Windows.System.VirtualKey.Right:
-                    player.MoveRight();
+                    player.MoveRight(Entities);
                     
                     break;
 
                 case Windows.System.VirtualKey.Down:
-                    player.MoveDown();
+                    player.MoveDown(Entities);
                     break;
 
                 default:
@@ -204,24 +204,6 @@ namespace Boulder_Pusher
                 }
             }
         }
-
-        // Start game
-        /*public void StartGame()
-        {
-            while(true)
-            {
-                if (UpPressed) player.MoveUp();
-
-                if (DownPressed) player.MoveDown();
-
-                if (LeftPressed) player.MoveLeft();
-
-                if (RightPressed) player.MoveRight();
-
-                await player.UpdatePosition();
-            }
-        }*/
-
         // Load Audio
         public async void LoadAudio()
         {
