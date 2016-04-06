@@ -37,6 +37,7 @@ namespace Boulder_Pusher
                 case Windows.System.VirtualKey.Up:
                     Debug.WriteLine("Up pressed!");
                     player.MoveUp();
+
                     break;
 
                 case Windows.System.VirtualKey.Left:

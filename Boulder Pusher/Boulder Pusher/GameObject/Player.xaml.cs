@@ -26,7 +26,8 @@ namespace Boulder_Pusher.GameObject
         public int X { get; set; }
         public int Y { get; set; }
 
-
+        private int currentframe = 0;
+        private int frameheight = 50;
         // Relay Player Position to Canvas
         public void UpdatePosition()
         {
@@ -43,16 +44,19 @@ namespace Boulder_Pusher.GameObject
         }
 
         public void MoveUp()
-        {
+        {  
             Y--;
             LocationY = (Y + 1) * 50;
             UpdatePosition();
+            SpriteSheetOffset.Y = 0;
         }
 
         public void MoveDown()
         {
             Y++;
             LocationY = (Y + 1) * 50;
+            currentframe = 1;
+            SpriteSheetOffset.Y = -50;
             UpdatePosition();
 
         }
@@ -60,6 +64,7 @@ namespace Boulder_Pusher.GameObject
         {
             X--;
             LocationX = (X + 1) * 50;
+            SpriteSheetOffset.Y = -100;
             UpdatePosition();
 
         }
@@ -67,6 +72,7 @@ namespace Boulder_Pusher.GameObject
         {
             X++;
             LocationX = (X + 1) * 50;
+            SpriteSheetOffset.Y = -150;
             UpdatePosition();
 
         }
