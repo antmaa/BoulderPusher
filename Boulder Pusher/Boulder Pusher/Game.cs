@@ -24,7 +24,10 @@ namespace Boulder_Pusher
         GameObject.Terrain terrain;
         GameObject.Wall wall;
         GameObject.Exit exit;
-        public static List<UserControl> Entities = new List<UserControl>();
+        public List<GameObject.Boulder> Boulds = new List<GameObject.Boulder>();
+        public List<GameObject.Terrain> Terrs = new List<GameObject.Terrain>();
+        public List<GameObject.Wall> Walls = new List<GameObject.Wall>();
+        public List<GameObject.Exit> Door = new List<GameObject.Exit>();
 
         // Audio
         public MediaElement bPTheme;
@@ -39,20 +42,20 @@ namespace Boulder_Pusher
             {
                 case Windows.System.VirtualKey.Up:
                     Debug.WriteLine("Up pressed!");
-                    player.MoveUp();
+                    player.MoveUp(Boulds, Terrs, Walls, Door);
                     break;
 
                 case Windows.System.VirtualKey.Left:
-                    player.MoveLeft(Entities);
+                    player.MoveLeft(Boulds, Terrs, Walls, Door);
                     break;
 
                 case Windows.System.VirtualKey.Right:
-                    player.MoveRight(Entities);
+                    player.MoveRight(Boulds, Terrs, Walls, Door);
                     
                     break;
 
                 case Windows.System.VirtualKey.Down:
-                    player.MoveDown(Entities);
+                    player.MoveDown(Boulds, Terrs, Walls, Door);
                     break;
 
                 default:
@@ -146,7 +149,6 @@ namespace Boulder_Pusher
                             Y = j
                         };
                         canvas.Children.Add(player);
-                        Entities.Add(player);
                         player.UpdatePosition();
                     }
                     else if (pBT[j, i] == 2) // Boulder
@@ -159,7 +161,7 @@ namespace Boulder_Pusher
                             Y = j
                         };
                         canvas.Children.Add(boulder);
-                        Entities.Add(boulder);
+                        Boulds.Add(boulder);
                         boulder.UpdatePosition();
                     }
                     else if (pBT[j, i] == 3) // Terrain
@@ -172,7 +174,7 @@ namespace Boulder_Pusher
                             Y = j
                         };
                         canvas.Children.Add(terrain);
-                        Entities.Add(terrain);
+                        Terrs.Add(terrain);
                         terrain.UpdatePosition();
                     }
                     else if (pBT[j, i] == 4) // Wall
@@ -185,7 +187,7 @@ namespace Boulder_Pusher
                             Y = j
                         };
                         canvas.Children.Add(wall);
-                        Entities.Add(wall);
+                        Walls.Add(wall);
                         wall.UpdatePosition();
                     }
                     else if (pBT[j, i] == 5) // Exit
@@ -198,7 +200,7 @@ namespace Boulder_Pusher
                             Y = j
                         };
                         canvas.Children.Add(exit);
-                        Entities.Add(exit);
+                        Door.Add(exit);
                         exit.UpdatePosition();
                     }// if 0, generate nothing
                 }

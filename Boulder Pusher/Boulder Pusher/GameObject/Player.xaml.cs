@@ -47,74 +47,122 @@ namespace Boulder_Pusher.GameObject
 
         // Move methods for the player. First checks the players
 
-        public void MoveUp(List<UserControl> entities)
+        public void MoveUp(
+            List<GameObject.Boulder> boulds,
+            List<GameObject.Terrain> terrs,
+            List<GameObject.Wall> walls,
+            List<GameObject.Exit> door)
         {
-            canMove = MovePlayer(X, Y-1, entities);
+            canMove = MovePlayer(X, Y - 1, boulds, terrs, walls, door);
             if (canMove == true)
             {
-            Y--;
+                Y--;
                 LocationY = Y * 50;
-            UpdatePosition();
-            SpriteSheetOffset.Y = 0;
-        }
+
+                SpriteSheetOffset.Y = 0;
+                UpdatePosition();
+            } else
+            {
+                return;
+            }
         }
 
-        public void MoveDown(List<UserControl> entities)
+        public void MoveDown(
+            List<GameObject.Boulder> boulds,
+            List<GameObject.Terrain> terrs,
+            List<GameObject.Wall> walls,
+            List<GameObject.Exit> door)
         {
-            canMove = MovePlayer(X, Y + 1, entities);
+            canMove = MovePlayer(X, Y + 1, boulds, terrs, walls, door);
             if (canMove == true)
             {
-            Y++;
-            LocationY = (Y + 1) * 50;
-            UpdatePosition();
+                Y++;
+                LocationY = Y * 50;
+
+                SpriteSheetOffset.Y = 0;
+                UpdatePosition();
+            }
+            else
+            {
+                return;
+            }
         }
-        }
-        public void MoveLeft(List<UserControl> entities)
+        public void MoveLeft(
+            List<GameObject.Boulder> boulds,
+            List<GameObject.Terrain> terrs,
+            List<GameObject.Wall> walls,
+            List<GameObject.Exit> door)
         {
-            canMove = MovePlayer(X - 1, Y, entities);
+            canMove = MovePlayer(X - 1, Y, boulds, terrs, walls, door);
             if (canMove == true)
             {
-            X--;
-            LocationX = (X + 1) * 50;
-            UpdatePosition();
+                X--;
+                LocationX = X * 50;
+
+                SpriteSheetOffset.Y = 0;
+                UpdatePosition();
+            }
+            else
+            {
+                return;
+            }
         }
-        }
-        public void MoveRight(List<UserControl> entities)
+        public void MoveRight(
+            List<GameObject.Boulder> boulds,
+            List<GameObject.Terrain> terrs,
+            List<GameObject.Wall> walls,
+            List<GameObject.Exit> door)
         {
-            canMove = MovePlayer(X + 1, Y, entities);
+            canMove = MovePlayer(X +1 , Y, boulds, terrs, walls, door);
             if (canMove == true)
-        {
-            X++;
-            LocationX = (X + 1) * 50;
-            UpdatePosition();
+            {
+                X++;
+                LocationX = X * 50;
+
+                SpriteSheetOffset.Y = 0;
+                UpdatePosition();
+            }
+            else
+            {
+                return;
             }
         }
 
         // Moving or pushing boulders, possible to be unable to move
-        private bool MovePlayer(int DestX, int DestY, List<UserControl> ents)
+        private bool MovePlayer(int DestX, int DestY,
+            List<GameObject.Boulder> boulds,
+            List<GameObject.Terrain> terrs,
+            List<GameObject.Wall> walls,
+            List<GameObject.Exit> door)
         {
             bool Clear = true;
             for (;;)
             {
-                foreach (Boulder boulder in ents)
+                foreach (Boulder boulder in boulds)
                 {
                     if (DestX == boulder.X && DestY == boulder.Y)
                     {
-                        Clear = false;
+                        Clear = MoveBoulder(DestX + (DestX - X), (DestY + (DestY - Y)), boulds, terrs, walls, door);
+                        if (Clear == true)
+                        {
+                            boulder.Push(DestX + (DestX - X), (DestY + (DestY - Y)));
+                        }
                         return Clear;
                     }
-        }
 
-                foreach (Terrain terrain in ents)
+
+                }
+
+                foreach (Terrain terrain in terrs)
                 {
                     if (DestX == terrain.X && DestY == terrain.Y)
                     {
                         Clear = false;
                         return Clear;
-    }
-}
+                    }
+                }
 
-                foreach (Wall wall in ents)
+                foreach (Wall wall in walls)
                 {
                     if (DestX == wall.X && DestY == wall.Y)
                     {
@@ -123,8 +171,7 @@ namespace Boulder_Pusher.GameObject
                     }
                 }
 
-
-                foreach (Exit exit in ents)
+                foreach (Exit exit in door)
                 {
                     if (DestX == exit.X && DestY == exit.Y)
                     {
@@ -138,12 +185,16 @@ namespace Boulder_Pusher.GameObject
 
         // Checks the path of the boulder that is about to be pushed.
         // Returning value "Clear" determines if the boulder is pushed (true) or cannot be pushed (false)
-        private bool MoveBoulder(int PathX, int PathY, int Amount, List<UserControl> ents)
+        private bool MoveBoulder(int PathX, int PathY,
+            List<GameObject.Boulder> boulds,
+            List<GameObject.Terrain> terrs,
+            List<GameObject.Wall> walls,
+            List<GameObject.Exit> door)
         {
             bool Clear = true;
-            for (;;)
+            while (Clear == true)
             {
-                foreach (Boulder boulder in ents)
+                foreach (Boulder boulder in boulds)
                 {
                     if (PathX == boulder.X && PathY == boulder.Y)
                     {
@@ -152,7 +203,7 @@ namespace Boulder_Pusher.GameObject
                     }
                 }
 
-                foreach (Terrain terrain in ents)
+                foreach (Terrain terrain in terrs)
                 {
                     if (PathX == terrain.X && PathY == terrain.Y)
                     {
@@ -161,7 +212,7 @@ namespace Boulder_Pusher.GameObject
                     }
                 }
 
-                foreach (Wall wall in ents)
+                foreach (Wall wall in walls)
                 {
                     if (PathX == wall.X && PathY == wall.Y)
                     {
@@ -169,8 +220,27 @@ namespace Boulder_Pusher.GameObject
                         return Clear;
                     }
                 }
+
+                /*if (Clear == true)
+                {
+                    foreach (Boulder boulder in ents)
+                    {
+                        if (PathX - (PathX - X) == boulder.X && PathY - (PathY - Y) == boulder.Y)
+                        {
+                            Boulder.Push(PathX, PathY);
+                        }
+                    }
+                    return Clear;
+                }*/
                 return Clear;
             }
+            return Clear;
         }
     }
-}
+}/* else foreach (var boulder in ents)
+                        {
+                            if (PathX - (PathX - X) == boulder.X && PathY - (PathY - Y) == boulder.Y)
+                            {
+                                Boulder.Push(PathX, PathY);
+                            }
+                        }*/
