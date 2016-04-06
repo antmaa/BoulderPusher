@@ -24,10 +24,13 @@ namespace Boulder_Pusher
         GameObject.Terrain terrain;
         GameObject.Wall wall;
         GameObject.Exit exit;
-        List<UserControl> Entities = new List<UserControl>();
+        public static List<UserControl> Entities = new List<UserControl>();
 
         // Audio
         public MediaElement bPTheme;
+
+        // Debug timer
+        DispatcherTimer debtim;
 
         // Movement initialisation
         private void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
@@ -37,20 +40,19 @@ namespace Boulder_Pusher
                 case Windows.System.VirtualKey.Up:
                     Debug.WriteLine("Up pressed!");
                     player.MoveUp();
-
                     break;
 
                 case Windows.System.VirtualKey.Left:
-                    player.MoveLeft();
+                    player.MoveLeft(Entities);
                     break;
 
                 case Windows.System.VirtualKey.Right:
-                    player.MoveRight();
+                    player.MoveRight(Entities);
                     
                     break;
 
                 case Windows.System.VirtualKey.Down:
-                    player.MoveDown();
+                    player.MoveDown(Entities);
                     break;
 
                 default:
@@ -105,11 +107,20 @@ namespace Boulder_Pusher
             this.canvas = canvas;
             CreatePBT();
             LoadAudio();
+            debtim = new DispatcherTimer();
             //StartGame();
+            debtim.Tick += Debtim_Tick;
+            debtim.Interval = new TimeSpan(0,0,0,1);
+            debtim.Start();
 
             // Key Listeners
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
             Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
+        }
+
+        private void Debtim_Tick(object sender, object e)
+        {
+            Debug.WriteLine(player.X + " " + player.Y);
         }
 
         // Print level
@@ -193,24 +204,6 @@ namespace Boulder_Pusher
                 }
             }
         }
-
-        // Start game
-        /*public void StartGame()
-        {
-            while(true)
-            {
-                if (UpPressed) player.MoveUp();
-
-                if (DownPressed) player.MoveDown();
-
-                if (LeftPressed) player.MoveLeft();
-
-                if (RightPressed) player.MoveRight();
-
-                await player.UpdatePosition();
-            }
-        }*/
-
         // Load Audio
         public async void LoadAudio()
         {
