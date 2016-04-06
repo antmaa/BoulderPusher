@@ -70,7 +70,7 @@ namespace Boulder_Pusher
             {
                 for (int j = 0; j <= 10; j++)
                 {
-                    // Block position
+                    // Block position on the canvas
                     int x = (50) * i; // 0, 50, 100...
                     int y = (50) * j; // 0, 50, 100...
                     // What to generate?
@@ -143,7 +143,7 @@ namespace Boulder_Pusher
         }
 
         // Movement --------------------------------------------------------------------------------
-        // Sends the player's different Move funktions the lists containing the other interactable objects (Walls, boulders etc...)
+        // Sends the player's Move functions, the lists containing the other interactable objects (Walls, boulders etc...)
         // The player entity then determines whether movement is possible
         // After a move either succeeds or fails, the step counter will increase by one (to be implemented)
         // When a key is pressed...
