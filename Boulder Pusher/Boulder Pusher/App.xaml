@@ -5,4 +5,8 @@
     xmlns:local="using:Boulder_Pusher"
     RequestedTheme="Light">
 
+    <Application.Resources>
+        <ResourceDictionary Source="Resources.xaml"></ResourceDictionary>
+    </Application.Resources>
+
 </Application>
