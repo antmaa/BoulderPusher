@@ -63,6 +63,7 @@ namespace Boulder_Pusher.GameObject
             List<GameObject.Exit> door
             )
         {
+            SpriteSheetOffset.Y = 0;
             canMove = MovePlayer(X, Y - 1, boulds, terrs, walls, door); // Sends the desired location and lists
             if (canMove == true)    // If movement is posible
             {
@@ -85,14 +86,14 @@ namespace Boulder_Pusher.GameObject
             List<GameObject.Wall> walls,
             List<GameObject.Exit> door
             )
+
         {
+            SpriteSheetOffset.Y = -50;
             canMove = MovePlayer(X, Y + 1, boulds, terrs, walls, door);
             if (canMove == true)
             {
                 Y++;
                 LocationY = Y * 50;
-
-                SpriteSheetOffset.Y = 0;
                 UpdatePosition();
             }
             else
@@ -110,13 +111,12 @@ namespace Boulder_Pusher.GameObject
             List<GameObject.Exit> door
             )
         {
+            SpriteSheetOffset.Y = -100;
             canMove = MovePlayer(X - 1, Y, boulds, terrs, walls, door);
             if (canMove == true)
             {
                 X--;
                 LocationX = X * 50;
-
-                SpriteSheetOffset.Y = 0;
                 UpdatePosition();
             }
             else
@@ -134,13 +134,12 @@ namespace Boulder_Pusher.GameObject
             List<GameObject.Exit> door
             )
         {
+            SpriteSheetOffset.Y = -150;
             canMove = MovePlayer(X + 1, Y, boulds, terrs, walls, door);
             if (canMove == true)
             {
                 X++;
                 LocationX = X * 50;
-
-                SpriteSheetOffset.Y = 0;
                 UpdatePosition();
             }
             else
@@ -157,7 +156,7 @@ namespace Boulder_Pusher.GameObject
             List<GameObject.Exit> door)
         {
             bool Clear = true; // Sets the possibility for movement as true unless obstructed
-            for (;;)           // Begins looping through the entity lists
+            while (true)           // Begins looping through the entity lists
             {
                 foreach (Boulder boulder in boulds) // Checks the destination for boulders
                 {

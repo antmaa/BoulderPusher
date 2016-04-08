@@ -153,6 +153,8 @@ namespace Boulder_Pusher
             {
                 case Windows.System.VirtualKey.Up:
                     player.MoveUp(Boulds, Terrs, Walls, Door);
+
+                    
                     break;
 
                 case Windows.System.VirtualKey.Left:
@@ -166,6 +168,7 @@ namespace Boulder_Pusher
 
                 case Windows.System.VirtualKey.Down:
                     player.MoveDown(Boulds, Terrs, Walls, Door);
+                   
                     break;
 
                 default:
