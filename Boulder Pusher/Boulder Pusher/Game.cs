@@ -26,7 +26,8 @@ namespace Boulder_Pusher
         public List<GameObject.Terrain> Terrs = new List<GameObject.Terrain>();
         public List<GameObject.Wall> Walls = new List<GameObject.Wall>();
         public List<GameObject.Exit> Door = new List<GameObject.Exit>();
-
+        // level
+        private int level;
         // Audio
         public MediaElement bPTheme;
 
@@ -60,12 +61,97 @@ namespace Boulder_Pusher
                 { 4,0,0,0,0,1,0,0,0,0,4 },
                 { 4,4,4,4,4,4,4,4,4,4,4 }
             };
+        public int[,] pBT2 =
+             {
+                 { 4,4,4,4,4,5,4,4,4,4,4 },
+                 { 4,4,4,4,0,0,0,4,4,4,4 },
+                 { 4,4,4,2,2,0,2,2,4,4,4 },
+                 { 4,4,4,0,2,2,2,0,4,4,4 },
+                 { 4,4,4,2,0,0,0,2,4,4,4 },
+                 { 4,4,4,0,2,2,2,0,4,4,4 },
+                 { 4,4,4,0,0,0,0,0,4,4,4 },
+                 { 4,4,4,0,0,0,0,0,4,4,4 },
+                 { 4,4,4,0,0,0,0,0,4,4,4 },
+                 { 4,4,4,0,0,1,0,0,4,4,4 },
+                 { 4,4,4,4,4,4,4,4,4,4,4 }
+             };
+        public int[,] pBT3 =
+            {
+                 { 4,4,4,4,4,5,4,4,4,4,4 },
+                 { 4,4,0,0,3,0,0,0,0,4,4 },
+                 { 4,2,0,0,0,3,3,0,0,4,4 },
+                 { 4,4,2,0,2,0,2,0,0,4,4 },
+                 { 4,4,0,2,0,2,0,3,3,4,4 },
+                 { 4,4,0,0,2,0,0,3,3,4,4 },
+                 { 4,4,3,2,0,0,0,0,0,4,4 },
+                 { 4,4,0,0,0,0,0,0,0,4,4 },
+                 { 4,4,0,0,0,0,0,0,0,4,4 },
+                 { 4,4,0,0,0,1,0,0,0,4,4 },
+                 { 4,4,4,4,4,4,4,4,4,4,4 }
+             };
+        public int[,] pBT4 =
+            {
+                 { 4,4,4,4,4,5,4,4,4,4,4 },
+                 { 4,4,0,0,3,0,0,0,0,4,4 },
+                 { 4,2,0,0,0,3,3,0,0,4,4 },
+                 { 4,4,2,0,2,0,2,0,0,4,4 },
+                 { 4,4,0,2,0,2,0,3,3,4,4 },
+                 { 4,4,0,0,2,0,0,3,3,4,4 },
+                 { 4,4,3,2,0,0,0,0,0,4,4 },
+                 { 4,4,0,0,0,0,0,0,0,4,4 },
+                 { 4,4,0,0,0,0,0,0,0,4,4 },
+                 { 4,4,0,0,0,1,0,0,0,4,4 },
+                 { 4,4,4,4,4,4,4,4,4,4,4 }
+             };
+        public int[,] pBT5 =
+            {
+                 { 4,4,4,4,4,5,4,4,4,4,4 },
+                 { 4,4,0,0,3,0,0,0,0,4,4 },
+                 { 4,2,0,0,0,3,3,0,0,4,4 },
+                 { 4,4,2,0,2,0,2,0,0,4,4 },
+                 { 4,4,0,2,0,2,0,3,3,4,4 },
+                 { 4,4,0,0,2,0,0,3,3,4,4 },
+                 { 4,4,3,2,0,0,0,0,0,4,4 },
+                 { 4,4,0,0,0,0,0,0,0,4,4 },
+                 { 4,4,0,0,0,0,0,0,0,4,4 },
+                 { 4,4,0,0,0,1,0,0,0,4,4 },
+                 { 4,4,4,4,4,4,4,4,4,4,4 }
+             };
+
 
         // Print level
         // Checks what element is in the (i,j) coordinates of the level's 2D integer list
         // Generates the appropriate entity
-        public void CreatePBT()
+
+        // Level switching 
+        // if player is in Exit coordinates Level switch method adds level and 
+        public void LevelSwitch()
         {
+            if(player.Switch == true)
+            {
+                level++;
+                if (player.level == 1)
+                {
+                    pBT = pBT2;
+                }
+                if (player.level == 2)
+                {
+                    pBT = pBT3;
+                }
+                if (player.level == 4)
+                {
+                    pBT = pBT4;
+                }
+                if (player.level == 5)
+                {
+                    pBT = pBT5;
+                }
+                canvas.Children.Clear();
+                CreatePBT();
+            }
+        }
+        public void CreatePBT()
+        {   
             for (int i = 0; i <= 10; i++)
             {
                 for (int j = 0; j <= 10; j++)
@@ -153,7 +239,7 @@ namespace Boulder_Pusher
             {
                 case Windows.System.VirtualKey.Up:
                     player.MoveUp(Boulds, Terrs, Walls, Door);
-
+                    LevelSwitch();
                     
                     break;
 

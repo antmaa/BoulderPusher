@@ -23,7 +23,8 @@ namespace Boulder_Pusher.GameObject
         // Player's location on the canvas (Example: 300px , 250px)
         public double LocationX { get; set; }
         public double LocationY { get; set; }
-
+        public bool Switch { get; set; }
+        public int level { get; set; }
         // Boolean used for determining possibility of movement
         private bool canMove;
 
@@ -198,7 +199,10 @@ namespace Boulder_Pusher.GameObject
                 {
                     if (DestX == exit.X && DestY == exit.Y)
                     {
-                        Clear = false;
+                        
+
+                        Clear = true;
+                        Switch = true;
                         return Clear;
                     }
                 }
