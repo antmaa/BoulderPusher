@@ -26,21 +26,36 @@ namespace Boulder_Pusher
         public List<GameObject.Terrain> Terrs = new List<GameObject.Terrain>();
         public List<GameObject.Wall> Walls = new List<GameObject.Wall>();
         public List<GameObject.Exit> Door = new List<GameObject.Exit>();
+
         // level
         private int level;
+
         // Audio
         public MediaElement bPTheme;
+
+        // Step counter and timer
+        int step = 0;
+        int time;
+        DispatcherTimer timer = new DispatcherTimer();
 
         // Constructor
         public Game(Canvas canvas)
         {
             this.canvas = canvas;
+            timer.Tick += Timer_Tick;
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Start();
             CreatePBT();
             LoadAudio();
 
             // Key Listeners
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
             Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
+        }
+
+        private void Timer_Tick(object sender, object e)
+        {
+            time++;
         }
 
         // Level creation --------------------------------------------------------------------------
@@ -118,15 +133,11 @@ namespace Boulder_Pusher
                  { 4,4,4,4,4,4,4,4,4,4,4 }
              };
 
-
-        // Print level
-        // Checks what element is in the (i,j) coordinates of the level's 2D integer list
-        // Generates the appropriate entity
-
         // Level switching 
         // if player is in Exit coordinates Level switch method adds level and 
         public void LevelSwitch()
         {
+            step = 0;
             if(player.Switch == true)
             {
                 level++;
@@ -150,6 +161,10 @@ namespace Boulder_Pusher
                 CreatePBT();
             }
         }
+
+        // Print level
+        // Checks what element is in the (i,j) coordinates of the level's 2D integer list
+        // Generates the appropriate entity
         public void CreatePBT()
         {   
             for (int i = 0; i <= 10; i++)
@@ -239,22 +254,24 @@ namespace Boulder_Pusher
             {
                 case Windows.System.VirtualKey.Up:
                     player.MoveUp(Boulds, Terrs, Walls, Door);
+                    step++;
                     LevelSwitch();
                     
                     break;
 
                 case Windows.System.VirtualKey.Left:
                     player.MoveLeft(Boulds, Terrs, Walls, Door);
+                    step++;
                     break;
 
                 case Windows.System.VirtualKey.Right:
                     player.MoveRight(Boulds, Terrs, Walls, Door);
-                    
+                    step++;
                     break;
 
                 case Windows.System.VirtualKey.Down:
                     player.MoveDown(Boulds, Terrs, Walls, Door);
-                   
+                    step++;
                     break;
 
                 default:

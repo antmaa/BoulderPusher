@@ -32,6 +32,20 @@
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center" FontSize="24"/>
 
+            <TextBlock x:Name="Step"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       Height="auto"
+                       Width="auto"
+                       Text="{Binding Value, Source=step, Mode=OneWay}"/>
+            
+            <TextBlock x:Name="Time"
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       Height="auto"
+                       Width="auto"
+                       Text="{Binding Value, Source=time, Mode=OneWay}"/>
+
             <Canvas x:Name="MyCanvas" 
                     VerticalAlignment="Top" 
                     HorizontalAlignment="Center" 

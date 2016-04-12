@@ -225,7 +225,7 @@ namespace Boulder_Pusher.GameObject
                 {
                     if (PathX == boulder.X && PathY == boulder.Y)
                     {
-                        Clear = false;
+                        Clear = false; // The boulder cannot be pushed, when blocked by other boulders
                         return Clear;
                     }
                 }
@@ -234,7 +234,7 @@ namespace Boulder_Pusher.GameObject
                 {
                     if (PathX == terrain.X && PathY == terrain.Y)
                     {
-                        Clear = false;
+                        Clear = false; // The boulder cannot be pushed, when blocked by terrain
                         return Clear;
                     }
                 }
@@ -243,12 +243,20 @@ namespace Boulder_Pusher.GameObject
                 {
                     if (PathX == wall.X && PathY == wall.Y)
                     {
-                        Clear = false;
+                        Clear = false; // The boulder cannot be pushed, when blocked by walls
+                        return Clear;
+                    }
+                }
+                foreach (Exit exit in door)
+                {
+                    if (PathX == exit.X && PathY == exit.Y)
+                    {
+                        Clear = false; // The boulder cannot be pushed on top of the exit
                         return Clear;
                     }
                 }
                 return Clear;
-            } // The boulder is possible to be pushed on top of the exit. Therefore exit collision is not checked
+            }
             return Clear;
         }
     }
