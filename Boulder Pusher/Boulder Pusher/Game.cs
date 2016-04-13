@@ -22,10 +22,10 @@ namespace Boulder_Pusher
         GameObject.Terrain terrain;
         GameObject.Wall wall;
         GameObject.Exit exit;
-        public List<GameObject.Boulder> Boulds = new List<GameObject.Boulder>();
-        public List<GameObject.Terrain> Terrs = new List<GameObject.Terrain>();
-        public List<GameObject.Wall> Walls = new List<GameObject.Wall>();
-        public List<GameObject.Exit> Door = new List<GameObject.Exit>();
+        public List<GameObject.Boulder> Boulds;
+        public List<GameObject.Terrain> Terrs;
+        public List<GameObject.Wall> Walls;
+        public List<GameObject.Exit> Door;
 
         // level
         private int level;
@@ -182,7 +182,11 @@ namespace Boulder_Pusher
         // Checks what element is in the (i,j) coordinates of the level's 2D integer list
         // Generates the appropriate entity
         public void CreatePBT()
-        {   
+        {
+            Boulds = new List<GameObject.Boulder>();
+            Terrs = new List<GameObject.Terrain>();
+            Walls = new List<GameObject.Wall>();
+            Door = new List<GameObject.Exit>();
             for (int i = 0; i <= 10; i++)
             {
                 for (int j = 0; j <= 10; j++)
