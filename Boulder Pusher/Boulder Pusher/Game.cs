@@ -94,7 +94,7 @@ namespace Boulder_Pusher
             {
                  { 4,4,4,4,4,5,4,4,4,4,4 },
                  { 4,4,0,0,3,0,0,0,0,4,4 },
-                 { 4,2,0,0,0,3,3,0,0,4,4 },
+                 { 4,4,0,0,0,3,3,0,0,4,4 },
                  { 4,4,2,0,2,0,2,0,0,4,4 },
                  { 4,4,0,2,0,2,0,3,3,4,4 },
                  { 4,4,0,0,2,0,0,3,3,4,4 },
@@ -135,25 +135,26 @@ namespace Boulder_Pusher
 
         // Level switching 
         // if player is in Exit coordinates Level switch method adds level and 
-        public int[,] LevelSwitch(int[,] pBT)
+        public void LevelSwitch()
         {
             step = 0;
             if(player.Switch == true)
             {
+                
                 level++;
-                if (player.level == 1)
+                if (level == 1)
                 {
                     pBT = pBT2;
                 }
-                if (player.level == 2)
+                if (level == 2)
                 {
                     pBT = pBT3;
                 }
-                if (player.level == 4)
+                if (level == 4)
                 {
                     pBT = pBT4;
                 }
-                if (player.level == 5)
+                if (level == 5)
                 {
                     pBT = pBT5;
                 }
@@ -177,7 +178,7 @@ namespace Boulder_Pusher
                 CreatePBT();
                 
             }
-            return pBT;
+            
         }
 
         // Print level
@@ -277,7 +278,7 @@ namespace Boulder_Pusher
                 case Windows.System.VirtualKey.Up:
                     player.MoveUp(Boulds, Terrs, Walls, Door);
                     step++;
-                    pBT = LevelSwitch(pBT);
+                    LevelSwitch();
                     
                     break;
 
