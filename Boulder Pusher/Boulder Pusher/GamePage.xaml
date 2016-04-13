@@ -48,11 +48,11 @@
 
             <Button x:Name="Reset"
                     Content="Reset"
-                    Height="75"
-                    Width="150"
+                    Height="50"
+                    Width="100"
                     Grid.Row="3"
                     HorizontalAlignment="Right"
-                    Margin="0,0,100,0"
+                    Margin="0,0,120,0"
                     Click="Reset_Click"/>
 
             <Canvas x:Name="MyCanvas" 
