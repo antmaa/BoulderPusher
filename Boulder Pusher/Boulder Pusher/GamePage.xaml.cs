@@ -50,7 +50,7 @@ namespace Boulder_Pusher
 
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
-            game.LevelSwitch();
+            game.LevelReset();
         }
     }
 }

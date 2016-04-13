@@ -176,9 +176,28 @@ namespace Boulder_Pusher
 
                 // Creating the new level
                 CreatePBT();
-                
             }
-            
+        }
+
+        public void LevelReset()
+        {
+            // Deleting all entities and emptying the entity list
+            Boulds = null;
+            Terrs = null;
+            Walls = null;
+            exit = null;
+
+            player = null;
+            boulder = null;
+            terrain = null;
+            wall = null;
+            exit = null;
+
+            // Removing existing items from the canvas
+            canvas.Children.Clear();
+
+            // Creating the new level
+            CreatePBT();
         }
 
         // Print level
