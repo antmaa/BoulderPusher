@@ -170,8 +170,6 @@ namespace Boulder_Pusher.GameObject
                         } // Tells the boulder to move to said location (2,4 in the example above)
                         return Clear;
                     } // If the path is obstructed, nothing will happen
-
-
                 }
 
                 // Similar to boulder movement, however, without the possibility to push
@@ -199,8 +197,6 @@ namespace Boulder_Pusher.GameObject
                 {
                     if (DestX == exit.X && DestY == exit.Y)
                     {
-                        
-
                         Clear = true;
                         Switch = true;
                         return Clear;

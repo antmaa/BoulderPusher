@@ -46,6 +46,12 @@
                        Width="auto"
                        Text="{Binding Value, Source=time, Mode=OneWay}"/>
 
+            <Button x:Name="Reset"
+                    Content="Reset"
+                    Height="75"
+                    Width="150"
+                    Margin="1000,400,0,0" Click="Reset_Click"/>
+
             <Canvas x:Name="MyCanvas" 
                     VerticalAlignment="Top" 
                     HorizontalAlignment="Center" 

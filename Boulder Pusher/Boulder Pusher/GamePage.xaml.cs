@@ -47,5 +47,10 @@ namespace Boulder_Pusher
             game = new Game(MyCanvas);
             //game.StartGame();
         }
+
+        private void Reset_Click(object sender, RoutedEventArgs e)
+        {
+            game.LevelSwitch();
+        }
     }
 }
