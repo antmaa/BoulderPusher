@@ -28,7 +28,7 @@ namespace Boulder_Pusher
         public List<GameObject.Exit> Door;
 
         // level
-        private int level;
+        private int level = 0;
 
         // Audio
         public MediaElement bPTheme;
@@ -135,7 +135,7 @@ namespace Boulder_Pusher
 
         // Level switching 
         // if player is in Exit coordinates Level switch method adds level and 
-        public void LevelSwitch()
+        public int[,] LevelSwitch(int[,] pBT)
         {
             step = 0;
             if(player.Switch == true)
@@ -175,7 +175,9 @@ namespace Boulder_Pusher
 
                 // Creating the new level
                 CreatePBT();
+                
             }
+            return pBT;
         }
 
         // Print level
@@ -275,7 +277,7 @@ namespace Boulder_Pusher
                 case Windows.System.VirtualKey.Up:
                     player.MoveUp(Boulds, Terrs, Walls, Door);
                     step++;
-                    LevelSwitch();
+                    pBT = LevelSwitch(pBT);
                     
                     break;
 
