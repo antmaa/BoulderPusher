@@ -53,7 +53,11 @@
                     Grid.Row="3"
                     HorizontalAlignment="Right"
                     Margin="0,0,120,0"
-                    Click="Reset_Click"/>
+                    Click="Reset_Click">
+                <Button.Background>
+                    <SolidColorBrush Color="#339C9C9C"/>
+                </Button.Background>
+            </Button>
 
             <Canvas x:Name="MyCanvas" 
                     VerticalAlignment="Top" 
