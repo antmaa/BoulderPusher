@@ -37,14 +37,14 @@
                        Grid.Row="1"
                        Height="auto"
                        Width="auto"
-                       Text="{Binding Value, Source=step, Mode=OneWay}"/>
+                       Text="{Binding Value, Source=game.StepTime.step}" Foreground="White"/>
             
             <TextBlock x:Name="Time"
                        Grid.Column="0"
                        Grid.Row="2"
                        Height="auto"
                        Width="auto"
-                       Text="{Binding Value, Source=time, Mode=OneWay}"/>
+                       Text="{Binding Value, Source=game.StepTime.time}" Foreground="White"/>
 
             <Button x:Name="Reset"
                     Content="Reset"
