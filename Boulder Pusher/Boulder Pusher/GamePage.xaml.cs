@@ -57,6 +57,7 @@ namespace Boulder_Pusher
         {
             // Navigate to MainPage
             this.Frame.Navigate(typeof(MainPage));
+            game.bPTheme.Stop();
         }
     }
 }
