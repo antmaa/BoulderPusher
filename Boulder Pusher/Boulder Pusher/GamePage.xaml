@@ -44,26 +44,13 @@
                        Height="auto"
                        Width="auto"
                        Text="{Binding Value, Source=game.StepTime.step}" Foreground="White"/>
-            
+
             <TextBlock x:Name="Time"
                        Grid.Column="0"
                        Grid.Row="2"
                        Height="auto"
                        Width="auto"
                        Text="{Binding Value, Source=game.StepTime.time}" Foreground="White"/>
-
-            <Button x:Name="Reset"
-                    Content="Reset"
-                    Height="50"
-                    Width="100"
-                    Grid.Row="3"
-                    HorizontalAlignment="Right"
-                    Margin="0,0,120,0"
-                    Click="Reset_Click">
-                <Button.Background>
-                    <SolidColorBrush Color="#339C9C9C"/>
-                </Button.Background>
-            </Button>
 
             <Canvas x:Name="MyCanvas" 
                     VerticalAlignment="Top" 
@@ -72,7 +59,28 @@
                     Grid.Column="0" 
                     Width="550"
                     Height="550"/>
-        </Grid>
 
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Width="365" Height="550" Grid.Row="3">
+                <Button x:Name="Reset"
+                    Content="Reset"
+                    Style="{StaticResource MainButtonStyle}"
+                    Height="50"
+                    Width="100"
+                    Grid.Row="3"
+                    HorizontalAlignment="Center"
+                    Margin="0,200,0,25"
+                    Click="Reset_Click"/>
+                <Button x:Name="Menu"
+                    Content="Main menu"
+                    Style="{StaticResource MainButtonStyle}"
+                    Height="50"
+                    Width="150"
+                    Grid.Row="3"
+                    HorizontalAlignment="Center"
+                    Margin="0,25,0,200"
+                    Click="Menu_Click"/>
+            </StackPanel>
+            
+        </Grid>
     </Grid>
 </Page>

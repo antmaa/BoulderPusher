@@ -46,7 +46,7 @@
                     Width="550"
                     Height="550">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="550" Height="550">
-                    <Button x:Name="PlayButton" Style="{StaticResource MainButtonStyle}" Content="Play" Margin="5,150,5,25" Click="PlayButton_Click" Foreground="#FFC0C0CB"/>
+                    <Button x:Name="PlayButton" Style="{StaticResource MainButtonStyle}" Content="Play" Margin="5,150,5,25" Click="PlayButton_Click"/>
                     <Button x:Name="CreditsButton" Style="{StaticResource MainButtonStyle}" Content="Credits" Margin="5,25,5,25" Click="CreditsButton_Click"/>
                     <Button x:Name="ExitButton" Style="{StaticResource MainButtonStyle}" Content="Exit" Margin="5,25,5,150" Click="ExitButton_Click"/>
                 </StackPanel>

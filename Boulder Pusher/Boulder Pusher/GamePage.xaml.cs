@@ -52,5 +52,11 @@ namespace Boulder_Pusher
         {
             game.LevelReset();
         }
+
+        private void Menu_Click(object sender, RoutedEventArgs e)
+        {
+            // Navigate to MainPage
+            this.Frame.Navigate(typeof(MainPage));
+        }
     }
 }
