@@ -9,7 +9,7 @@
     Width="1280"
     Height="720">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="Black">
         <Grid x:Name="Game">
 
             <Grid.RowDefinitions>
