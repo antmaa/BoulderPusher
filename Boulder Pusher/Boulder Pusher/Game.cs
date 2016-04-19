@@ -32,7 +32,7 @@ namespace Boulder_Pusher
 
         // Audio
         public MediaElement bPTheme;
-
+        public MediaElement bPMove;
         // Step counter and timer
         int step = 0;
         int time;
@@ -357,6 +357,19 @@ namespace Boulder_Pusher
                 await folder.GetFileAsync("BoulderPusherMixdown(2).wav");
             var stream = await file.OpenAsync(FileAccessMode.Read);
             bPTheme.SetSource(stream, file.ContentType);
+        }
+        public async void LoadMoveAudio()
+        {
+
+            bPMove = new MediaElement();
+            bPMove.AutoPlay = false;
+                StorageFolder folder =
+    await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
+                StorageFile file =
+    await folder.GetFileAsync("tada.wav");
+                var stream = await file.OpenAsync(FileAccessMode.Read);
+            bPMove.SetSource(stream, file.ContentType);
+                        
         }
 
 
