@@ -34,8 +34,7 @@ namespace Boulder_Pusher
         public MediaElement bPTheme;
 
         // Step counter and timer
-        int step = 0;
-        int time;
+        StepTimeViewModel StepTime = new StepTimeViewModel();
         DispatcherTimer timer = new DispatcherTimer();
 
         // Constructor
@@ -55,11 +54,11 @@ namespace Boulder_Pusher
 
         private void Timer_Tick(object sender, object e)
         {
-            time++;
+            StepTime.time++;
         }
 
         // Level creation --------------------------------------------------------------------------
-        // List of GameObjects for map generation: 0=Empty, 1=player, 2=Boulder, 3=terrain...
+        // List of GameObjects for map generation: 0=Empty, 1=player, 2=Boulder, 3=terrain, 4=wall and 5=exit
         // pBT = playerBoulderTerrain
         // Change level names later!!!
         public int[,] pBT =
@@ -137,7 +136,6 @@ namespace Boulder_Pusher
         // if player is in Exit coordinates Level switch method adds level and 
         public void LevelSwitch()
         {
-            step = 0;
             if(player.Switch == true)
             {
                 
@@ -296,24 +294,23 @@ namespace Boulder_Pusher
             {
                 case Windows.System.VirtualKey.Up:
                     player.MoveUp(Boulds, Terrs, Walls, Door);
-                    step++;
-                    LevelSwitch();
-                    
+                    StepTime.step++;
+                    LevelSwitch();                    
                     break;
 
                 case Windows.System.VirtualKey.Left:
                     player.MoveLeft(Boulds, Terrs, Walls, Door);
-                    step++;
+                    StepTime.step++;
                     break;
 
                 case Windows.System.VirtualKey.Right:
                     player.MoveRight(Boulds, Terrs, Walls, Door);
-                    step++;
+                    StepTime.step++;
                     break;
 
                 case Windows.System.VirtualKey.Down:
                     player.MoveDown(Boulds, Terrs, Walls, Door);
-                    step++;
+                    StepTime.step++;
                     break;
 
                 default:
