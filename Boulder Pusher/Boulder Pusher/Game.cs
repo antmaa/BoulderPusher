@@ -27,6 +27,7 @@ namespace Boulder_Pusher
         public List<GameObject.Terrain> Terrs;
         public List<GameObject.Wall> Walls;
         public List<GameObject.Exit> Door;
+        public List<GameObject.Floor> Floors;
 
         // level
         private int level = 0;
@@ -216,6 +217,7 @@ namespace Boulder_Pusher
             Terrs = new List<GameObject.Terrain>();
             Walls = new List<GameObject.Wall>();
             Door = new List<GameObject.Exit>();
+            Floors = new List<GameObject.Floor>;
             for (int i = 0; i <= 10; i++)
             {
                 for (int j = 0; j <= 10; j++)
@@ -229,9 +231,10 @@ namespace Boulder_Pusher
                         floor = new GameObject.Floor
                         {
                             LocationX = x,
-                            LocationY = y,
+                            LocationY = y
                         };
                         canvas.Children.Add(floor);
+                        Floors.Add(floor);
                         floor.UpdatePosition();
                     }
                     if (pBT[j, i] == 1) // Generate Player later, but floor for now
@@ -239,13 +242,22 @@ namespace Boulder_Pusher
                         floor = new GameObject.Floor
                         {
                             LocationX = x,
-                            LocationY = y,
+                            LocationY = y
                         };
                         canvas.Children.Add(floor);
                         floor.UpdatePosition();
                     }
                     else if (pBT[j, i] == 2) // Generate Boulder
                     {
+                        floor = new GameObject.Floor
+                        {
+                            LocationX = x,
+                            LocationY = y
+                        };
+                        canvas.Children.Add(floor);
+                        Floors.Add(floor);
+                        floor.UpdatePosition();
+
                         boulder = new GameObject.Boulder
                         {
                             LocationX = x,
@@ -259,6 +271,15 @@ namespace Boulder_Pusher
                     }
                     else if (pBT[j, i] == 3) // Generate Terrain
                     {
+                        floor = new GameObject.Floor
+                        {
+                            LocationX = x,
+                            LocationY = y
+                        };
+                        canvas.Children.Add(floor);
+                        Floors.Add(floor);
+                        floor.UpdatePosition();
+
                         terrain = new GameObject.Terrain
                         {
                             LocationX = x,
