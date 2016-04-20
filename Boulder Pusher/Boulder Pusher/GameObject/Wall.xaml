@@ -15,7 +15,7 @@
                    Height="350">
             <Rectangle.Fill>
                 <ImageBrush
-                    ImageSource="/Assets/Sprites/Walls2.png"
+                    ImageSource="/Assets/Sprites/Walls3.png"
                     Stretch="None"
                     AlignmentX="Left"
                     AlignmentY="Top"
