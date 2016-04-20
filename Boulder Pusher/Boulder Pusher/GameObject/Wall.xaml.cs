@@ -33,10 +33,14 @@ namespace Boulder_Pusher.GameObject
             SetValue(Canvas.LeftProperty, LocationX);
             SetValue(Canvas.TopProperty, LocationY);
         }
-        public Wall( int Positon )
-        {   
-            SpriteSheetOffset = Position - 4 * 50 * (-1);
+        public Wall( int Position, int xX, int yY, int iI, int jJ )
+        {
             this.InitializeComponent();
+            SpriteSheetOffset.Y = Position - 4 * 50 * (-1);
+            LocationX = xX;
+            LocationY = yY;
+            X = iI;
+            Y = jJ;
         }
     }
 }
