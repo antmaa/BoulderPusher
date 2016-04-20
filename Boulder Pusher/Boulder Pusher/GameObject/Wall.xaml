@@ -6,16 +6,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="250"
+    d:DesignHeight="350"
     d:DesignWidth="50">
 
     <Grid>
         <Rectangle x:Name="wall"
                    Width="50"
-                   Height="250">
+                   Height="350">
             <Rectangle.Fill>
                 <ImageBrush
-                    ImageSource="/Assets/Sprites/Walls.png"
+                    ImageSource="/Assets/Sprites/Walls2.png"
                     Stretch="None"
                     AlignmentX="Left"
                     AlignmentY="Top"

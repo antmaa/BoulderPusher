@@ -84,17 +84,17 @@ namespace Boulder_Pusher
             };
         public int[,] pBT2 =
              {
-                 { 4,4,4,4,4,5,4,4,4,4,4 },
-                 { 4,4,4,4,0,0,0,4,4,4,4 },
-                 { 4,4,4,2,2,0,2,2,4,4,4 },
-                 { 4,4,4,0,2,2,2,0,4,4,4 },
-                 { 4,4,4,2,0,0,0,2,4,4,4 },
-                 { 4,4,4,0,2,2,2,0,4,4,4 },
-                 { 4,4,4,0,0,0,0,0,4,4,4 },
-                 { 4,4,4,0,0,0,0,0,4,4,4 },
-                 { 4,4,4,0,0,0,0,0,4,4,4 },
-                 { 4,4,4,0,0,1,0,0,4,4,4 },
-                 { 4,4,4,4,4,4,4,4,4,4,4 }
+                 { 0,0,0,7,4,5,4,8,0,0,0 },
+                 { 0,0,7,10,0,0,0,11,8,0,0 },
+                 { 0,0,5,2,2,0,2,2,6,0,0 },
+                 { 0,0,5,0,2,2,2,0,6,0,0 },
+                 { 0,0,5,2,0,0,0,2,6,0,0 },
+                 { 0,0,5,0,2,2,2,0,6,0,0 },
+                 { 0,0,5,0,0,0,0,0,6,0,0 },
+                 { 0,0,5,0,0,0,0,0,6,0,0 },
+                 { 0,0,5,0,0,0,0,0,6,0,0 },
+                 { 0,0,5,0,0,1,0,0,6,0,0 },
+                 { 0,0,5,0,0,0,0,0,6,0,0 }
              };
         public int[,] pBT3 =
             {
@@ -295,7 +295,21 @@ namespace Boulder_Pusher
                         Walls.Add(wall);
                         wall.UpdatePosition();
                     }
-                    else if (pBT[j, i] == 9) // Generate Exit
+                    else if (pBT[j, i] == 9) // Generate Wall
+                    {
+                        wall = new GameObject.Wall(pBT[j, i], x, y, i, j);
+                        canvas.Children.Add(wall);
+                        Walls.Add(wall);
+                        wall.UpdatePosition();
+                    }
+                    else if (pBT[j, i] == 10) // Generate Wall
+                    {
+                        wall = new GameObject.Wall(pBT[j, i], x, y, i, j);
+                        canvas.Children.Add(wall);
+                        Walls.Add(wall);
+                        wall.UpdatePosition();
+                    }
+                    else if (pBT[j, i] == 11) // Generate Exit
                     {
                         exit = new GameObject.Exit
                         {
