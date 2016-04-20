@@ -261,8 +261,8 @@ namespace Boulder_Pusher
                         terrain.UpdatePosition();
                     }
                     else if (pBT[j, i] == 4) // Generate Wall
-                    {
-                        wall = new GameObject.Wall
+                    {   
+                        wall = new GameObject.Wall(pBT[j,i])
                         {
                             LocationX = x,
                             LocationY = y,
@@ -273,7 +273,59 @@ namespace Boulder_Pusher
                         Walls.Add(wall);
                         wall.UpdatePosition();
                     }
-                    else if (pBT[j, i] == 5) // Generate Exit
+                    else if (pBT[j, i] == 5) // Generate Wall
+                    {
+                        wall = new GameObject.Wall(pBT[j, i])
+                        {
+                            LocationX = x,
+                            LocationY = y,
+                            X = i,
+                            Y = j
+                        };
+                        canvas.Children.Add(wall);
+                        Walls.Add(wall);
+                        wall.UpdatePosition();
+                    }
+                    else if (pBT[j, i] == 6) // Generate Wall
+                    {
+                        wall = new GameObject.Wall(pBT[j, i])
+                        {
+                            LocationX = x,
+                            LocationY = y,
+                            X = i,
+                            Y = j
+                        };
+                        canvas.Children.Add(wall);
+                        Walls.Add(wall);
+                        wall.UpdatePosition();
+                    }
+                    else if (pBT[j, i] == 7) // Generate Wall
+                    {
+                        wall = new GameObject.Wall(pBT[j, i])
+                        {
+                            LocationX = x,
+                            LocationY = y,
+                            X = i,
+                            Y = j
+                        };
+                        canvas.Children.Add(wall);
+                        Walls.Add(wall);
+                        wall.UpdatePosition();
+                    }
+                    else if (pBT[j, i] == 8) // Generate Wall
+                    {
+                        wall = new GameObject.Wall(pBT[j, i])
+                        {
+                            LocationX = x,
+                            LocationY = y,
+                            X = i,
+                            Y = j
+                        };
+                        canvas.Children.Add(wall);
+                        Walls.Add(wall);
+                        wall.UpdatePosition();
+                    }
+                    else if (pBT[j, i] == 9) // Generate Exit
                     {
                         exit = new GameObject.Exit
                         {

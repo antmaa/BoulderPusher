@@ -25,7 +25,7 @@ namespace Boulder_Pusher.GameObject
 
         public int X { get; set; }
         public int Y { get; set; }
-
+       
         // Relay Wall Position to Canvas
         public void UpdatePosition()
         {
@@ -33,8 +33,9 @@ namespace Boulder_Pusher.GameObject
             SetValue(Canvas.LeftProperty, LocationX);
             SetValue(Canvas.TopProperty, LocationY);
         }
-        public Wall()
-        {
+        public Wall( int Positon )
+        {   
+            SpriteSheetOffset = Position - 4 * 50 * (-1);
             this.InitializeComponent();
         }
     }
