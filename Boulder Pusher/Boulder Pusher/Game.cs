@@ -39,7 +39,7 @@ namespace Boulder_Pusher
 
 
         // Step counter and timer
-        StepTimeViewModel StepTime;
+        public StepTimeViewModel StepTime;
         DispatcherTimer timer = new DispatcherTimer();
 
         // Constructor
