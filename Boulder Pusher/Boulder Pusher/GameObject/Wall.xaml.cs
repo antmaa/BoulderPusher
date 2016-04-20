@@ -36,7 +36,9 @@ namespace Boulder_Pusher.GameObject
         public Wall( int Position, int xX, int yY, int iI, int jJ )
         {
             this.InitializeComponent();
-            SpriteSheetOffset.Y = Position - 4 * 50 * (-1);
+            Height = 50;
+            Width = 50;
+            SpriteSheetOffset.Y = (Position - 4) * 50 * (-1);
             LocationX = xX;
             LocationY = yY;
             X = iI;
