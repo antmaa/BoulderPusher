@@ -28,7 +28,7 @@ namespace Boulder_Pusher
         private double CanvasHeight = 550;
 
         // Game
-        private Game game;
+        private Game game { get; set; }
 
         public GamePage()
         {

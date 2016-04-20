@@ -39,7 +39,7 @@ namespace Boulder_Pusher
 
 
         // Step counter and timer
-        //StepTimeViewModel StepTime = new StepTimeViewModel();
+        StepTimeViewModel StepTime;
         DispatcherTimer timer = new DispatcherTimer();
 
         // Constructor
@@ -54,6 +54,7 @@ namespace Boulder_Pusher
             LoadMoveAudio();
             LoadMoveAudio2();
             LoadMoveAudio3();
+            StepTime = new StepTimeViewModel();
 
             // Key Listeners
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
@@ -62,7 +63,7 @@ namespace Boulder_Pusher
 
         private void Timer_Tick(object sender, object e)
         {
-           // StepTime.time++;
+            StepTime.Time++;
         }
 
         // Level creation --------------------------------------------------------------------------
@@ -368,26 +369,26 @@ namespace Boulder_Pusher
             {
                 case Windows.System.VirtualKey.Up:
                     player.MoveUp(Boulds, Terrs, Walls, Door);
-                    //.step++;
+                    StepTime.Step++;
                     bPMove.Play();
                     LevelSwitch();                    
                     break;
 
                 case Windows.System.VirtualKey.Left:
                     player.MoveLeft(Boulds, Terrs, Walls, Door);
-                    // StepTime.step++;
+                    StepTime.Step++;
                     bPMove2.Play();
                     break;
 
                 case Windows.System.VirtualKey.Right:
                     player.MoveRight(Boulds, Terrs, Walls, Door);
-                    //StepTime.step++;
+                    StepTime.Step++;
                     bPMove3.Play();
                     break;
 
                 case Windows.System.VirtualKey.Down:
                     player.MoveDown(Boulds, Terrs, Walls, Door);
-                    // StepTime.step++;
+                    StepTime.Step++;
                     bPMove.Play();
                     break;
 
