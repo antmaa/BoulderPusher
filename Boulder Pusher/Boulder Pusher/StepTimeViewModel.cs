@@ -8,28 +8,37 @@ using System.Threading.Tasks;
 
 namespace Boulder_Pusher
 {
-   /* class StepTimeViewModel : INotifyPropertyChanged
+    class StepTimeViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private int step;
+        private int time;
+
         public StepTimeViewModel()
         {
-            step = 0;
-            time = 0;
+            Step = 0;
+            Time = 0;
         }
 
-        public int step
+        public int Step
         {
-            get { return step; }
+            get
+            {
+                return step;
+            }
             set
             {
                 step = value;
                 RaisePropertyChanged();
             }
         }
-        public int time
+        public int Time
         {
-            get { return time; }
+            get
+            {
+                return time;
+            }
             set
             {
                 time = value;
@@ -44,5 +53,5 @@ namespace Boulder_Pusher
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-    }*/
+    }
 }

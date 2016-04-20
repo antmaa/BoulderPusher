@@ -39,7 +39,7 @@ namespace Boulder_Pusher
 
 
         // Step counter and timer
-        //StepTimeViewModel StepTime = new StepTimeViewModel();
+        public StepTimeViewModel StepTime;
         DispatcherTimer timer = new DispatcherTimer();
 
         // Constructor
@@ -54,6 +54,7 @@ namespace Boulder_Pusher
             LoadMoveAudio();
             LoadMoveAudio2();
             LoadMoveAudio3();
+            StepTime = new StepTimeViewModel();
 
             // Key Listeners
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
@@ -62,7 +63,7 @@ namespace Boulder_Pusher
 
         private void Timer_Tick(object sender, object e)
         {
-           // StepTime.time++;
+            StepTime.Time++;
         }
 
         // Level creation --------------------------------------------------------------------------
@@ -71,22 +72,22 @@ namespace Boulder_Pusher
         // Change level names later!!!
         public int[,] pBT =
             {
-                { 7,4,4,4,4,9,4,4,4,4,8 },
+                { 7,4,4,4,4,11,4,4,4,4,8 },
                 { 5,0,0,0,0,2,0,0,0,0,6 },
                 { 5,0,0,0,0,0,0,0,0,0,6 },
                 { 5,0,3,0,3,0,0,3,0,0,6 },
                 { 5,0,3,3,3,0,0,3,0,0,6 },
                 { 5,0,3,0,3,0,0,3,0,0,6 },
-                { 4,0,0,0,0,0,0,0,0,0,6 },
-                { 4,0,0,0,0,0,0,0,0,0,6 },
-                { 4,0,0,0,0,0,0,2,0,0,6 },
-                { 4,0,0,0,0,1,0,0,0,0,6 },
-                { 4,4,4,4,4,4,4,4,4,4,4 }
+                { 5,0,0,0,0,0,0,0,0,0,6 },
+                { 5,0,0,0,0,0,0,0,0,0,6 },
+                { 5,0,0,0,0,0,0,2,0,0,6 },
+                { 5,0,0,0,0,1,0,0,0,0,6 },
+                { 5,4,4,4,4,4,4,4,4,4,6 }
             };
         public int[,] pBT2 =
              {
-                 { 0,0,0,7,4,5,4,8,0,0,0 },
-                 { 0,0,7,10,0,0,0,11,8,0,0 },
+                 { 0,0,0,7,4,11,4,8,0,0,0 },
+                 { 0,0,7,9,0,0,0,10,8,0,0 },
                  { 0,0,5,2,2,0,2,2,6,0,0 },
                  { 0,0,5,0,2,2,2,0,6,0,0 },
                  { 0,0,5,2,0,0,0,2,6,0,0 },
@@ -99,31 +100,31 @@ namespace Boulder_Pusher
              };
         public int[,] pBT3 =
             {
-                 { 4,4,4,4,4,5,4,4,4,4,4 },
-                 { 4,4,0,0,3,0,0,0,0,4,4 },
-                 { 4,4,0,0,0,3,3,0,0,4,4 },
-                 { 4,4,2,0,2,0,2,0,0,4,4 },
-                 { 4,4,0,2,0,2,0,3,3,4,4 },
-                 { 4,4,0,0,2,0,2,3,3,4,4 },
-                 { 4,4,3,2,0,2,0,0,0,4,4 },
-                 { 4,4,0,0,0,0,0,0,0,4,4 },
-                 { 4,4,0,0,0,0,0,0,0,4,4 },
-                 { 4,4,0,0,0,1,0,0,0,4,4 },
-                 { 4,4,4,4,4,4,4,4,4,4,4 }
+                 { 0,7,4,4,4,11,4,4,4,8,0 },
+                 { 0,5,0,0,3,0,0,0,0,6,0 },
+                 { 0,5,0,0,0,3,3,0,0,6,0 },
+                 { 0,5,2,0,2,0,2,0,0,6,0 },
+                 { 0,5,0,2,0,2,0,3,3,6,0 },
+                 { 0,5,0,0,2,0,2,3,3,6,0 },
+                 { 0,5,3,2,0,2,0,0,0,6,0 },
+                 { 0,5,0,0,0,0,0,0,0,6,0 },
+                 { 0,5,0,0,0,0,0,0,0,6,0 },
+                 { 0,5,0,0,0,1,0,0,0,6,0 },
+                 { 0,5,0,0,0,0,0,0,0,6,0 }
              };
         public int[,] pBT4 =
             {
-                 { 4,4,4,4,4,5,4,4,4,4,4 },
-                 { 4,4,4,4,0,0,0,4,4,4,4 },
-                 { 4,4,4,0,2,0,2,0,4,4,4 },
-                 { 4,4,4,0,2,2,2,0,4,4,4 },
-                 { 4,4,4,2,0,2,0,2,4,4,4 },
-                 { 4,4,4,0,2,0,2,0,4,4,4 },
-                 { 4,4,4,2,0,0,0,2,4,4,4 },
-                 { 4,4,4,0,2,2,2,0,4,4,4 },
-                 { 4,4,4,0,0,0,0,0,4,4,4 },
-                 { 4,4,4,0,0,1,0,0,4,4,4 },
-                 { 4,4,4,4,4,4,4,4,4,4,4 }
+                 { 0,0,0,7,4,11,4,8,0,0,0 },
+                 { 0,0,7,9,0,0,0,10,8,0,0 },
+                 { 0,0,5,0,2,0,2,0,6,0,0 },
+                 { 0,0,5,0,2,2,2,0,6,0,0 },
+                 { 0,0,5,2,0,2,0,2,6,0,0 },
+                 { 0,0,5,0,2,0,2,0,6,0,0 },
+                 { 0,0,5,2,0,0,0,2,6,0,0 },
+                 { 0,0,5,0,2,2,2,0,6,0,0 },
+                 { 0,0,5,0,0,0,0,0,6,0,0 },
+                 { 0,0,5,0,0,1,0,0,6,0,0 },
+                 { 0,0,5,4,4,4,4,4,6,0,0 }
              };
         public int[,] pBT5 =
             {
@@ -368,26 +369,26 @@ namespace Boulder_Pusher
             {
                 case Windows.System.VirtualKey.Up:
                     player.MoveUp(Boulds, Terrs, Walls, Door);
-                    //.step++;
+                    StepTime.Step++;
                     bPMove.Play();
                     LevelSwitch();                    
                     break;
 
                 case Windows.System.VirtualKey.Left:
                     player.MoveLeft(Boulds, Terrs, Walls, Door);
-                    // StepTime.step++;
+                    StepTime.Step++;
                     bPMove2.Play();
                     break;
 
                 case Windows.System.VirtualKey.Right:
                     player.MoveRight(Boulds, Terrs, Walls, Door);
-                    //StepTime.step++;
+                    StepTime.Step++;
                     bPMove3.Play();
                     break;
 
                 case Windows.System.VirtualKey.Down:
                     player.MoveDown(Boulds, Terrs, Walls, Door);
-                    // StepTime.step++;
+                    StepTime.Step++;
                     bPMove.Play();
                     break;
 
