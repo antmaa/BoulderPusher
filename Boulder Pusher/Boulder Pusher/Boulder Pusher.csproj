@@ -155,6 +155,7 @@
     <Content Include="Assets\BPTheme.wav" />
     <Content Include="Assets\BUUP.wav" />
     <Content Include="Assets\Sprites\Boulder.png" />
+    <Content Include="Assets\Sprites\BrickDoor.png" />
     <Content Include="Assets\Sprites\BrickWall.png" />
     <Content Include="Assets\Sprites\BrickWallCornerLeft.png" />
     <Content Include="Assets\Sprites\BrickWallCornerRight.png" />
