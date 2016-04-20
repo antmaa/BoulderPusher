@@ -17,6 +17,7 @@ namespace Boulder_Pusher
         private Canvas canvas;
 
         // Game Objects
+        GameObject.Floor floor;
         GameObject.Player player;
         GameObject.Boulder boulder;
         GameObject.Terrain terrain;
@@ -38,7 +39,7 @@ namespace Boulder_Pusher
 
 
         // Step counter and timer
-        //StepTimeViewModel StepTime = new StepTimeViewModel();
+        StepTimeViewModel StepTime;
         DispatcherTimer timer = new DispatcherTimer();
 
         // Constructor
@@ -53,6 +54,7 @@ namespace Boulder_Pusher
             LoadMoveAudio();
             LoadMoveAudio2();
             LoadMoveAudio3();
+            StepTime = new StepTimeViewModel();
 
             // Key Listeners
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
@@ -61,7 +63,7 @@ namespace Boulder_Pusher
 
         private void Timer_Tick(object sender, object e)
         {
-           // StepTime.time++;
+            StepTime.Time++;
         }
 
         // Level creation --------------------------------------------------------------------------
@@ -221,18 +223,26 @@ namespace Boulder_Pusher
                     // Block position on the canvas
                     int x = (50) * i; // 0, 50, 100...
                     int y = (50) * j; // 0, 50, 100...
-                    // What to generate?
-                    if (pBT[j, i] == 1) // Generate Player
+                                      // What to generate?
+                    if (pBT[j, i] == 0) // Generate Floor
                     {
-                        player = new GameObject.Player
+                        floor = new GameObject.Floor
                         {
                             LocationX = x,
                             LocationY = y,
-                            X = i,
-                            Y = j
                         };
-                        canvas.Children.Add(player);
-                        player.UpdatePosition();
+                        canvas.Children.Add(floor);
+                        floor.UpdatePosition();
+                    }
+                    if (pBT[j, i] == 1) // Generate Player later, but floor for now
+                    {
+                        floor = new GameObject.Floor
+                        {
+                            LocationX = x,
+                            LocationY = y,
+                        };
+                        canvas.Children.Add(floor);
+                        floor.UpdatePosition();
                     }
                     else if (pBT[j, i] == 2) // Generate Boulder
                     {
@@ -324,6 +334,28 @@ namespace Boulder_Pusher
                     }// if 0, generate nothing
                 }
             }
+            for (int i = 0; i <= 10; i++) // Separate loop for creating the player
+            {                             // This way the player will not appear behind some floors
+                for (int j = 0; j <= 10; j++)
+                {
+                    // Block position on the canvas
+                    int x = (50) * i; // 0, 50, 100...
+                    int y = (50) * j; // 0, 50, 100...
+
+                    if (pBT[j, i] == 1) // Generate Player
+                    {
+                        player = new GameObject.Player
+                        {
+                            LocationX = x,
+                            LocationY = y,
+                            X = i,
+                            Y = j
+                        };
+                        canvas.Children.Add(player);
+                        player.UpdatePosition();
+                    }
+                }
+            }
         }
 
         // Movement --------------------------------------------------------------------------------
@@ -337,26 +369,26 @@ namespace Boulder_Pusher
             {
                 case Windows.System.VirtualKey.Up:
                     player.MoveUp(Boulds, Terrs, Walls, Door);
-                    //.step++;
+                    StepTime.Step++;
                     bPMove.Play();
                     LevelSwitch();                    
                     break;
 
                 case Windows.System.VirtualKey.Left:
                     player.MoveLeft(Boulds, Terrs, Walls, Door);
-                    // StepTime.step++;
+                    StepTime.Step++;
                     bPMove2.Play();
                     break;
 
                 case Windows.System.VirtualKey.Right:
                     player.MoveRight(Boulds, Terrs, Walls, Door);
-                    //StepTime.step++;
+                    StepTime.Step++;
                     bPMove3.Play();
                     break;
 
                 case Windows.System.VirtualKey.Down:
                     player.MoveDown(Boulds, Terrs, Walls, Door);
-                    // StepTime.step++;
+                    StepTime.Step++;
                     bPMove.Play();
                     break;
 
