@@ -33,8 +33,12 @@ namespace Boulder_Pusher
         // Audio
         public MediaElement bPTheme;
         public MediaElement bPMove;
+        public MediaElement bPMove2;
+        public MediaElement bPMove3;
+
+
         // Step counter and timer
-        StepTimeViewModel StepTime = new StepTimeViewModel();
+        //StepTimeViewModel StepTime = new StepTimeViewModel();
         DispatcherTimer timer = new DispatcherTimer();
 
         // Constructor
@@ -46,6 +50,9 @@ namespace Boulder_Pusher
             timer.Start();
             CreatePBT();
             LoadAudio();
+            LoadMoveAudio();
+            LoadMoveAudio2();
+            LoadMoveAudio3();
 
             // Key Listeners
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
@@ -54,7 +61,7 @@ namespace Boulder_Pusher
 
         private void Timer_Tick(object sender, object e)
         {
-            StepTime.time++;
+           // StepTime.time++;
         }
 
         // Level creation --------------------------------------------------------------------------
@@ -294,23 +301,27 @@ namespace Boulder_Pusher
             {
                 case Windows.System.VirtualKey.Up:
                     player.MoveUp(Boulds, Terrs, Walls, Door);
-                    StepTime.step++;
+                    //.step++;
+                    bPMove.Play();
                     LevelSwitch();                    
                     break;
 
                 case Windows.System.VirtualKey.Left:
                     player.MoveLeft(Boulds, Terrs, Walls, Door);
-                    StepTime.step++;
+                    // StepTime.step++;
+                    bPMove2.Play();
                     break;
 
                 case Windows.System.VirtualKey.Right:
                     player.MoveRight(Boulds, Terrs, Walls, Door);
-                    StepTime.step++;
+                    //StepTime.step++;
+                    bPMove3.Play();
                     break;
 
                 case Windows.System.VirtualKey.Down:
                     player.MoveDown(Boulds, Terrs, Walls, Door);
-                    StepTime.step++;
+                    // StepTime.step++;
+                    bPMove.Play();
                     break;
 
                 default:
@@ -363,10 +374,36 @@ namespace Boulder_Pusher
                 StorageFolder folder =
     await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
                 StorageFile file =
-    await folder.GetFileAsync("tada.wav");
+    await folder.GetFileAsync("BOOP.wav");
                 var stream = await file.OpenAsync(FileAccessMode.Read);
             bPMove.SetSource(stream, file.ContentType);
                         
+        }
+        public async void LoadMoveAudio2()
+        {
+
+            bPMove2 = new MediaElement();
+            bPMove2.AutoPlay = false;
+            StorageFolder folder =
+await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
+            StorageFile file =
+await folder.GetFileAsync("BIIP.wav");
+            var stream = await file.OpenAsync(FileAccessMode.Read);
+            bPMove2.SetSource(stream, file.ContentType);
+
+        }
+        public async void LoadMoveAudio3()
+        {
+
+            bPMove3 = new MediaElement();
+            bPMove3.AutoPlay = false;
+            StorageFolder folder =
+await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
+            StorageFile file =
+await folder.GetFileAsync("BUUP.wav");
+            var stream = await file.OpenAsync(FileAccessMode.Read);
+            bPMove3.SetSource(stream, file.ContentType);
+
         }
 
 
