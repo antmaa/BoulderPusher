@@ -33,6 +33,9 @@ namespace Boulder_Pusher.GameObject
         public Floor()
         {
             this.InitializeComponent();
+
+            Width = 50;
+            Height = 50;
         }
     }
 }
