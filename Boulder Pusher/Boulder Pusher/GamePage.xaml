@@ -43,14 +43,14 @@
                        Grid.Row="1"
                        Height="auto"
                        Width="auto"
-                       Text="{Binding Value, Source=game.StepTime.step}" Foreground="White"/>
+                       Text="{x:Bind game.StepTime.Step, Mode=OneWay}" Foreground="White"/>
 
             <TextBlock x:Name="Time"
                        Grid.Column="0"
                        Grid.Row="2"
                        Height="auto"
                        Width="auto"
-                       Text="{Binding Value, Source=game.StepTime.time}" Foreground="White"/>
+                       Text="{x:Bind game.StepTime.Time, Mode=OneWay}" Foreground="White"/>
 
             <Canvas x:Name="MyCanvas" 
                     VerticalAlignment="Top" 
