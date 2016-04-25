@@ -15,7 +15,7 @@
                    Height="50">
             <Rectangle.Fill>
                 <ImageBrush
-                    ImageSource="\Assets\Sprites\BrickFloor.png"
+                    ImageSource="\Assets\Sprites\Floor.png"
                     Stretch="None"
                     AlignmentX="Left"
                     AlignmentY="Top"

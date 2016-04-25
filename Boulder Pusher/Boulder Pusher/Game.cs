@@ -51,9 +51,9 @@ namespace Boulder_Pusher
             timer.Start();
             CreatePBT();
             LoadAudio();
-            LoadMoveAudio();
-            LoadMoveAudio2();
-            LoadMoveAudio3();
+           // LoadMoveAudio();
+           // LoadMoveAudio2();
+           // LoadMoveAudio3();
             StepTime = new StepTimeViewModel();
 
             // Key Listeners
@@ -128,17 +128,17 @@ namespace Boulder_Pusher
              };
         public int[,] pBT5 =
             {
-                 { 4,4,4,4,4,5,4,4,4,4,4 },
-                 { 4,4,0,0,3,0,0,0,0,4,4 },
-                 { 4,2,0,0,0,3,3,0,0,4,4 },
-                 { 4,4,2,0,2,0,2,0,0,4,4 },
-                 { 4,4,0,2,0,2,0,3,3,4,4 },
-                 { 4,4,0,0,2,0,0,3,3,4,4 },
-                 { 4,4,3,2,0,0,0,0,0,4,4 },
-                 { 4,4,0,0,0,0,0,0,0,4,4 },
-                 { 4,4,0,0,0,0,0,0,0,4,4 },
-                 { 4,4,0,0,0,1,0,0,0,4,4 },
-                 { 4,4,4,4,4,4,4,4,4,4,4 }
+                 { 0,0,0,7,4,11,4,8,4,8,0 },
+                 { 7,4,4,9,0,2,0,10,4,4,8 },
+                 { 5,0,0,0,2,0,2,0,0,0,6 },
+                 { 5,0,2,0,2,0,2,0,2,0,6 },
+                 { 5,3,0,3,0,3,0,3,0,3,6 },
+                 { 5,0,2,0,2,0,2,0,2,0,6 },
+                 { 5,3,0,3,0,3,0,3,0,3,6 },
+                 { 5,0,2,0,2,0,2,0,2,0,6 },
+                 { 5,0,0,2,2,2,2,2,0,0,6 },
+                 { 5,0,0,0,0,1,0,0,0,0,6 },
+                 { 5,0,0,0,0,0,0,0,0,0,6 }
              };
 
         // Level switching 
@@ -229,7 +229,7 @@ namespace Boulder_Pusher
                         floor = new GameObject.Floor
                         {
                             LocationX = x,
-                            LocationY = y,
+                            LocationY = y
                         };
                         canvas.Children.Add(floor);
                         floor.UpdatePosition();
@@ -239,7 +239,7 @@ namespace Boulder_Pusher
                         floor = new GameObject.Floor
                         {
                             LocationX = x,
-                            LocationY = y,
+                            LocationY = y
                         };
                         canvas.Children.Add(floor);
                         floor.UpdatePosition();
@@ -370,26 +370,26 @@ namespace Boulder_Pusher
                 case Windows.System.VirtualKey.Up:
                     player.MoveUp(Boulds, Terrs, Walls, Door);
                     StepTime.Step++;
-                    bPMove.Play();
+                    //bPMove.Play();
                     LevelSwitch();                    
                     break;
 
                 case Windows.System.VirtualKey.Left:
                     player.MoveLeft(Boulds, Terrs, Walls, Door);
                     StepTime.Step++;
-                    bPMove2.Play();
+                   // bPMove2.Play();
                     break;
 
                 case Windows.System.VirtualKey.Right:
                     player.MoveRight(Boulds, Terrs, Walls, Door);
                     StepTime.Step++;
-                    bPMove3.Play();
+                    //bPMove3.Play();
                     break;
 
                 case Windows.System.VirtualKey.Down:
                     player.MoveDown(Boulds, Terrs, Walls, Door);
                     StepTime.Step++;
-                    bPMove.Play();
+                    //bPMove.Play();
                     break;
 
                 default:
@@ -434,7 +434,7 @@ namespace Boulder_Pusher
             var stream = await file.OpenAsync(FileAccessMode.Read);
             bPTheme.SetSource(stream, file.ContentType);
         }
-        public async void LoadMoveAudio()
+       /* public async void LoadMoveAudio()
         {
 
             bPMove = new MediaElement();
@@ -471,8 +471,8 @@ await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(
 await folder.GetFileAsync("BUUP.wav");
             var stream = await file.OpenAsync(FileAccessMode.Read);
             bPMove3.SetSource(stream, file.ContentType);
-
-        }
+            
+        }*/
 
 
         // End of class
