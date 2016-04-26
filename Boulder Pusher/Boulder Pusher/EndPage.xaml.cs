@@ -28,7 +28,9 @@ namespace Boulder_Pusher
         private double CanvasWidth = 550;
         private double CanvasHeight = 550;
 
-        public EndPage(StepTimeViewModel stepTime)
+        StepTimeViewModel stepTime;
+
+        public EndPage()
         {
             this.InitializeComponent();
 
@@ -59,11 +61,12 @@ namespace Boulder_Pusher
             // Exits the application
             Application.Current.Exit();
         }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter is StepTimeViewModel)
             {
-                StepTimeViewModel stepTime = (StepTimeViewModel)e.Parameter;
+                stepTime = (StepTimeViewModel)e.Parameter;
             }
             base.OnNavigatedTo(e);
         }
