@@ -45,7 +45,7 @@
                        Width="auto"
                        Margin="0,0,150,0"
                        HorizontalAlignment="Center"
-                       Text="{x:Bind game.StepTime.Step, Mode=OneWay}" Foreground="White" TextAlignment="Center"/>
+                       Text="Step: {x:Bind game.StepTime.Step, Mode=OneWay}" Foreground="White" TextAlignment="Center"/>
 
             <TextBlock x:Name="Time"
                        Grid.Column="0"
@@ -54,7 +54,7 @@
                        Width="auto"
                        Margin="150,0,0,0"
                        HorizontalAlignment="Center"
-                       Text="{x:Bind game.StepTime.Time, Mode=OneWay}" Foreground="White" TextAlignment="Center"/>
+                       Text="Time: {x:Bind game.StepTime.Time, Mode=OneWay}" Foreground="White" TextAlignment="Center"/>
 
             <Canvas x:Name="MyCanvas" 
                     VerticalAlignment="Top" 
