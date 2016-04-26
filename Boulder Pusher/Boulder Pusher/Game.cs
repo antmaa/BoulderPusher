@@ -245,26 +245,28 @@ namespace Boulder_Pusher
                     // Block position on the canvas
                     int x = (50) * i; // 0, 50, 100...
                     int y = (50) * j; // 0, 50, 100...
-                                      // What to generate?
-                    if (pBT[j, i] == 0) // Generate Floor
+
+                    // Generating the Floor, which will be covered by objects appropriately
+                    floor = new GameObject.Floor
                     {
-                        floor = new GameObject.Floor
+                        LocationX = x,
+                        LocationY = y
+                    };
+                    canvas.Children.Add(floor);
+                    floor.UpdatePosition();
+
+                    // What to generate?
+                    if (pBT[j, i] == 1) // Generate Player
+                    {
+                        player = new GameObject.Player
                         {
                             LocationX = x,
-                            LocationY = y
+                            LocationY = y,
+                            X = i,
+                            Y = j
                         };
-                        canvas.Children.Add(floor);
-                        floor.UpdatePosition();
-                    }
-                    if (pBT[j, i] == 1) // Generate Player later, but floor for now
-                    {
-                        floor = new GameObject.Floor
-                        {
-                            LocationX = x,
-                            LocationY = y
-                        };
-                        canvas.Children.Add(floor);
-                        floor.UpdatePosition();
+                        canvas.Children.Add(player);
+                        player.UpdatePosition();
                     }
                     else if (pBT[j, i] == 2) // Generate Boulder
                     {
@@ -361,28 +363,6 @@ namespace Boulder_Pusher
                         Door.Add(exit);
                         exit.UpdatePosition();
                     }// if 0, generate nothing
-                }
-            }
-            for (int i = 0; i <= 10; i++) // Separate loop for creating the player
-            {                             // This way the player will not appear behind some floors
-                for (int j = 0; j <= 10; j++)
-                {
-                    // Block position on the canvas
-                    int x = (50) * i; // 0, 50, 100...
-                    int y = (50) * j; // 0, 50, 100...
-
-                    if (pBT[j, i] == 1) // Generate Player
-                    {
-                        player = new GameObject.Player
-                        {
-                            LocationX = x,
-                            LocationY = y,
-                            X = i,
-                            Y = j
-                        };
-                        canvas.Children.Add(player);
-                        player.UpdatePosition();
-                    }
                 }
             }
         }

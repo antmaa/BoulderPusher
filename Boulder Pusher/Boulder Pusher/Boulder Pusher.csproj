@@ -102,6 +102,9 @@
     <Compile Include="CreditsPage.xaml.cs">
       <DependentUpon>CreditsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EndPage.xaml.cs">
+      <DependentUpon>EndPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="GameObject\Boulder.xaml.cs">
       <DependentUpon>Boulder.xaml</DependentUpon>
@@ -162,7 +165,7 @@
     <Content Include="Assets\Sprites\BrickWallLeft.png" />
     <Content Include="Assets\Sprites\BrickWallRight.png" />
     <Content Include="Assets\Sprites\canvas.png" />
-    <Content Include="Assets\Sprites\EntireFloor.png" />
+    <Content Include="Assets\Sprites\EntireFloor2.png" />
     <Content Include="Assets\Sprites\Exit.png" />
     <Content Include="Assets\Sprites\Floor.png" />
     <Content Include="Assets\Sprites\Knight_ALL.png" />
@@ -187,6 +190,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="CreditsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EndPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
