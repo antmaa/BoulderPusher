@@ -64,6 +64,10 @@ namespace Boulder_Pusher
         private void Timer_Tick(object sender, object e)
         {
             StepTime.Time++;
+            if (level == 6)
+            {
+                timer.Stop();
+            }
         }
 
         // Level creation --------------------------------------------------------------------------
