@@ -14,8 +14,8 @@
                    Width="550"
                    Height="550">
             <Rectangle.Fill>
-                <ImageBrush
-                    ImageSource="\Assets\Sprites\EntireFloor.png"
+                <ImageBrush 
+                    ImageSource="\Assets\Sprites\EntireFloor2.png"
                     Stretch="None"
                     AlignmentX="Left"
                     AlignmentY="Top"
