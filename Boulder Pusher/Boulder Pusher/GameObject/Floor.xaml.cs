@@ -34,8 +34,8 @@ namespace Boulder_Pusher.GameObject
         {
             this.InitializeComponent();
 
-            Width = 50;
-            Height = 50;
+            Width = 550;
+            Height = 550;
         }
     }
 }
