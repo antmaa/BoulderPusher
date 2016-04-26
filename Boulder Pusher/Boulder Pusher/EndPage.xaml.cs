@@ -28,7 +28,7 @@ namespace Boulder_Pusher
         private double CanvasWidth = 550;
         private double CanvasHeight = 550;
 
-        public EndPage()
+        public EndPage(StepTimeViewModel stepTime)
         {
             this.InitializeComponent();
 
