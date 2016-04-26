@@ -153,7 +153,7 @@ namespace Boulder_Pusher
                  { 5,0,3,3,3,3,3,3,3,0,6 },
                  { 5,0,0,0,0,1,0,0,0,0,6 },
                  { 5,0,0,0,0,0,0,0,0,0,6 }
-             };
+             };//
 
         // Level switching 
         // if player is in Exit coordinates Level switch method adds level and 
