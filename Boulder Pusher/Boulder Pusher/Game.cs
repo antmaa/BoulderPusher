@@ -10,7 +10,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace Boulder_Pusher
 {
-    class Game
+    public class Game
     {
         // Constructor and the main variables ------------------------------------------------------
         // Canvas
@@ -193,7 +193,7 @@ namespace Boulder_Pusher
 
                 if (level == 6)
                 {
-                    gamePage.EndGame();
+                    gamePage.EndGame(StepTime);
                 }
 
                 // Deleting all entities and emptying the entity list

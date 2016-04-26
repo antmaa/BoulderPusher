@@ -28,7 +28,7 @@ namespace Boulder_Pusher
         private double CanvasHeight = 550;
 
         // Game
-        private Game game { get; set; }
+        public Game game { get; set; }
 
         public GamePage()
         {
@@ -59,9 +59,10 @@ namespace Boulder_Pusher
             this.Frame.Navigate(typeof(MainPage));
             game.bPTheme.Stop();
         }
-        public void EndGame()
+
+        internal void EndGame(StepTimeViewModel stepTime)
         {
-            this.Frame.Navigate(typeof(EndPage));
+            this.Frame.Navigate(typeof(EndPage), stepTime);
         }
     }
 }

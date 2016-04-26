@@ -59,5 +59,13 @@ namespace Boulder_Pusher
             // Exits the application
             Application.Current.Exit();
         }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter is StepTimeViewModel)
+            {
+                StepTimeViewModel stepTime = (StepTimeViewModel)e.Parameter;
+            }
+            base.OnNavigatedTo(e);
+        }
     }
 }
