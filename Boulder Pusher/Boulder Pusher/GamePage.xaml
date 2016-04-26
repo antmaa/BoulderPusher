@@ -89,6 +89,14 @@
                     Width="550"
                     Height="550"/>
 
+            <Image Source="/Assets/Sprites/EntireFloor.png"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Center" 
+                   Grid.Row="3" 
+                   Grid.Column="0" 
+                   Width="550"
+                   Height="550"/>
+
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Width="365" Height="550" Grid.Row="3">
                 <Button x:Name="Reset"
                     Content="Reset"
