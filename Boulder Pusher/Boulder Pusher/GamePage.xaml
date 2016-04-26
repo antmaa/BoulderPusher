@@ -13,8 +13,9 @@
         <Grid x:Name="Game">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -25,8 +26,8 @@
                        Text="Boulder Pusher"
                        Grid.Column="0"
                        Grid.Row="0"
-                       Height="100"
-                       Width="550"
+                       Height="75"
+                       Width="auto"
                        TextAlignment="Center"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center" FontSize="64" FontFamily="Rockwell Extra Bold" FontWeight="Bold">
@@ -38,9 +39,33 @@
                 </TextBlock.Foreground>
             </TextBlock>
 
-            <TextBlock x:Name="Step"
+            <TextBlock x:Name="StepText"
                        Grid.Column="0"
                        Grid.Row="1"
+                       Text="Step"
+                       Foreground="White"
+                       Width="auto"
+                       Height="30"
+                       Margin="0,0,150,0"
+                       Padding="0,5,0,5"
+                       HorizontalAlignment="Center"
+                       />
+            
+            <TextBlock x:Name="TimeText"
+                       Grid.Column="0"
+                       Grid.Row="1"    
+                       Text="Time"
+                       Foreground="White"
+                       Width="auto"
+                       Height="30"
+                       Margin="150,0,0,0"
+                       Padding="0,5,0,5"
+                       HorizontalAlignment="Center"
+                       />
+
+            <TextBlock x:Name="Step"
+                       Grid.Column="0"
+                       Grid.Row="2"
                        Height="auto"
                        Width="auto"
                        Margin="0,0,150,0"
@@ -49,20 +74,28 @@
 
             <TextBlock x:Name="Time"
                        Grid.Column="0"
-                       Grid.Row="1"
+                       Grid.Row="2"
                        Height="auto"
                        Width="auto"
                        Margin="150,0,0,0"
                        HorizontalAlignment="Center"
                        Text="{x:Bind game.StepTime.Time, Mode=OneWay}" Foreground="White" TextAlignment="Center"/>
-
-            <Canvas x:Name="MyCanvas" 
+            
+             <Canvas x:Name="MyCanvas" 
                     VerticalAlignment="Top" 
                     HorizontalAlignment="Center" 
                     Grid.Row="3" 
                     Grid.Column="0" 
                     Width="550"
                     Height="550"/>
+
+            <Image Source="/Assets/Sprites/EntireFloor.png"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Center" 
+                   Grid.Row="3" 
+                   Grid.Column="0" 
+                   Width="550"
+                   Height="550"/>
 
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Width="365" Height="550" Grid.Row="3">
                 <Button x:Name="Reset"
