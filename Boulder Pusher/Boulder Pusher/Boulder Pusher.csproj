@@ -162,6 +162,7 @@
     <Content Include="Assets\Sprites\BrickWallLeft.png" />
     <Content Include="Assets\Sprites\BrickWallRight.png" />
     <Content Include="Assets\Sprites\canvas.png" />
+    <Content Include="Assets\Sprites\EntireFloor.png" />
     <Content Include="Assets\Sprites\Exit.png" />
     <Content Include="Assets\Sprites\Floor.png" />
     <Content Include="Assets\Sprites\Knight_ALL.png" />
