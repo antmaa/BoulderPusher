@@ -44,7 +44,7 @@ namespace Boulder_Pusher
             CanvasHeight = MyCanvas.Height;
 
             // Create a new game
-            game = new Game(MyCanvas);
+            game = new Game(MyCanvas, this);
             //game.StartGame();
         }
 
@@ -58,6 +58,10 @@ namespace Boulder_Pusher
             // Navigate to MainPage
             this.Frame.Navigate(typeof(MainPage));
             game.bPTheme.Stop();
+        }
+        public void EndGame()
+        {
+            this.Frame.Navigate(typeof(EndPage));
         }
     }
 }

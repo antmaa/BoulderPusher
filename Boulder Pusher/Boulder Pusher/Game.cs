@@ -42,10 +42,13 @@ namespace Boulder_Pusher
         public StepTimeViewModel StepTime;
         DispatcherTimer timer = new DispatcherTimer();
 
+        public GamePage gamePage;
+
         // Constructor
-        public Game(Canvas canvas)
+        public Game(Canvas canvas, GamePage gamePage)
         {
             this.canvas = canvas;
+            this.gamePage = gamePage;
             timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
@@ -186,6 +189,11 @@ namespace Boulder_Pusher
                 if (level == 5)
                 {
                     pBT = pBT6;
+                }
+
+                if (level == 6)
+                {
+                    gamePage.EndGame();
                 }
 
                 // Deleting all entities and emptying the entity list
