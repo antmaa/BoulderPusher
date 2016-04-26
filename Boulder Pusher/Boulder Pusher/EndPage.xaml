@@ -38,6 +38,54 @@
                 </TextBlock.Foreground>
             </TextBlock>
 
+            <TextBlock x:Name="StepText"
+                       Grid.Column="0"
+                       Grid.Row="1"    
+                       Text="Steps taken"
+                       Foreground="White"
+                       Width="auto"
+                       Height="30"
+                       Margin="0,0,150,0"
+                       Padding="0,5,0,5"
+                       HorizontalAlignment="Center"
+                       />
+
+            <TextBlock x:Name="TimeText"
+                       Grid.Column="0"
+                       Grid.Row="1"    
+                       Text="Seconds"
+                       Foreground="White"
+                       Width="auto"
+                       Height="30"
+                       Margin="150,0,0,0"
+                       Padding="0,5,0,5"
+                       HorizontalAlignment="Center"
+                       />
+
+            <TextBlock x:Name="Step"
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       Height="50"
+                       Width="auto"
+                       Margin="0,0,150,0"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Text="{x:Bind game.StepTime.Step, Mode=OneWay}"
+                       Foreground="White"
+                       TextAlignment="Center" FontSize="21.333"/>
+
+            <TextBlock x:Name="Time"
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       Height="50"
+                       Width="auto"
+                       Margin="150,0,0,0"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Text="{x:Bind game.StepTime.Time, Mode=OneWay}"
+                       Foreground="White"
+                       TextAlignment="Center" FontSize="21.333"/>
+
             <Canvas x:Name="MyCanvas"
                     VerticalAlignment="Top" 
                     HorizontalAlignment="Center" 
