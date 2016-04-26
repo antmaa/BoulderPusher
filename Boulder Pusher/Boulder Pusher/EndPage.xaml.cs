@@ -19,15 +19,12 @@ using Windows.UI.Xaml.Navigation;
 namespace Boulder_Pusher
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Displays the player's final score after beating the game.
+    /// Also has buttons for exiting the application, going back to the main menu and restarting the game.
     /// </summary>
+
     public sealed partial class EndPage : Page
     {
-
-        // Canvas values
-        private double CanvasWidth = 550;
-        private double CanvasHeight = 550;
-
         StepTimeViewModel stepTime;
 
         public EndPage()
@@ -38,10 +35,6 @@ namespace Boulder_Pusher
             ApplicationView.PreferredLaunchWindowingMode
                 = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             ApplicationView.PreferredLaunchViewSize = new Size(1280, 720);
-
-            // Used in Ball and Paddle
-            CanvasWidth = MyCanvas.Width;
-            CanvasHeight = MyCanvas.Height;
         }
 
         private void RestartButton_Click(object sender, RoutedEventArgs e)
@@ -62,6 +55,7 @@ namespace Boulder_Pusher
             Application.Current.Exit();
         }
 
+        // Receives the StepTime viewmodel from the game for displaying the score on the screen.
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter is StepTimeViewModel)

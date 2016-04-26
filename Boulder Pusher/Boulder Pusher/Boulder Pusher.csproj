@@ -112,12 +112,6 @@
     <Compile Include="GameObject\Exit.xaml.cs">
       <DependentUpon>Exit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GameObject\Floor.xaml.cs">
-      <DependentUpon>Floor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GameObject\MyUserControl1.xaml.cs">
-      <DependentUpon>MyUserControl1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="GameObject\Player.xaml.cs">
       <DependentUpon>Player.xaml</DependentUpon>
     </Compile>
@@ -126,15 +120,6 @@
     </Compile>
     <Compile Include="GameObject\Wall.xaml.cs">
       <DependentUpon>Wall.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GameObject\WallCornerLeft.xaml.cs">
-      <DependentUpon>WallCornerLeft.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GameObject\WallCornerRight.xaml.cs">
-      <DependentUpon>WallCornerRight.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GameObject\WallLeft.xaml.cs">
-      <DependentUpon>WallLeft.xaml</DependentUpon>
     </Compile>
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
@@ -152,28 +137,13 @@
     <None Include="Boulder Pusher_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\BIIP.wav" />
-    <Content Include="Assets\BOOP.wav" />
     <Content Include="Assets\BoulderPusherMixdown%282%29.wav" />
-    <Content Include="Assets\BPTheme.wav" />
-    <Content Include="Assets\BUUP.wav" />
     <Content Include="Assets\Sprites\Boulder.png" />
     <Content Include="Assets\Sprites\BrickDoor2.png" />
-    <Content Include="Assets\Sprites\BrickWall.png" />
-    <Content Include="Assets\Sprites\BrickWallCornerLeft.png" />
-    <Content Include="Assets\Sprites\BrickWallCornerRight.png" />
-    <Content Include="Assets\Sprites\BrickWallLeft.png" />
-    <Content Include="Assets\Sprites\BrickWallRight.png" />
-    <Content Include="Assets\Sprites\canvas.png" />
     <Content Include="Assets\Sprites\EntireFloor2.png" />
-    <Content Include="Assets\Sprites\Exit.png" />
     <Content Include="Assets\Sprites\Floor.png" />
     <Content Include="Assets\Sprites\Knight_ALL.png" />
-    <Content Include="Assets\Sprites\Knight_FRONT.png" />
-    <Content Include="Assets\Sprites\Knight_LEFT.png" />
-    <Content Include="Assets\Sprites\Knight_RIGHT.png" />
     <Content Include="Assets\Sprites\Terrain.png" />
-    <Content Include="Assets\Sprites\Wall.png" />
     <Content Include="Assets\Sprites\Walls4.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -205,14 +175,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GameObject\Floor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GameObject\MyUserControl1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="GameObject\Player.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -222,18 +184,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GameObject\Wall.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GameObject\WallCornerLeft.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GameObject\WallCornerRight.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GameObject\WallLeft.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

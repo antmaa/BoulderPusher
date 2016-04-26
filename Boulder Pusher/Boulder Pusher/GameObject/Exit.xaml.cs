@@ -18,6 +18,10 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Boulder_Pusher.GameObject
 {
+    /// <summary>
+    /// Exit GameObject. Contains the exit's X and Y coordinates and location on the canvas.
+    /// </summary>
+
     public sealed partial class Exit : UserControl
     {
         public double LocationX { get; set; }
@@ -29,7 +33,6 @@ namespace Boulder_Pusher.GameObject
         // Relay Terrain Position to Canvas
         public void UpdatePosition()
         {
-            Debug.WriteLine("Exit loc: " + Canvas.LeftProperty + " " + Canvas.TopProperty);
             SetValue(Canvas.LeftProperty, LocationX);
             SetValue(Canvas.TopProperty, LocationY);
         }

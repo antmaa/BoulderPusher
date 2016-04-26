@@ -19,14 +19,13 @@ using Windows.UI.Xaml.Navigation;
 namespace Boulder_Pusher
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Contains the canvas, which is used for presenting the game to the player.
+    /// Also displays the player's step- and time counters.
+    /// Has a level reset button and an exit game button.
     /// </summary>
+
     public sealed partial class GamePage : Page
     {
-        // Canvas values
-        private double CanvasWidth = 550;
-        private double CanvasHeight = 550;
-
         // Game
         public Game game { get; set; }
 
@@ -39,15 +38,11 @@ namespace Boulder_Pusher
                 = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             ApplicationView.PreferredLaunchViewSize = new Size(1280, 720);
 
-            // Used in Ball and Paddle
-            CanvasWidth = MyCanvas.Width;
-            CanvasHeight = MyCanvas.Height;
-
             // Create a new game
             game = new Game(MyCanvas, this);
-            //game.StartGame();
         }
 
+        // Reset button for reseting the level if the player gets stuck
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
             game.LevelReset();
@@ -60,6 +55,7 @@ namespace Boulder_Pusher
             game.bPTheme.Stop();
         }
 
+        // Method used when the player beats the game. Takes the player to the screen which displays their final score
         internal void EndGame(StepTimeViewModel stepTime)
         {
             this.Frame.Navigate(typeof(EndPage), stepTime);

@@ -18,6 +18,12 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Boulder_Pusher.GameObject
 {
+    /// <summary>
+    /// Boulder GameObject. Contains the boulder's X and Y coordinates and location on the canvas.
+    /// Also contains the boulder's move function,
+    /// which updates the boulder's location on the canvas when pushed
+    /// </summary>
+
     public sealed partial class Boulder : UserControl
     {
         public double LocationX { get; set; }
@@ -29,7 +35,6 @@ namespace Boulder_Pusher.GameObject
         // Relay Boulder Position to Canvas
         public void UpdatePosition()
         {
-            Debug.WriteLine("Boulder loc: " + Canvas.LeftProperty + " " + Canvas.TopProperty);
             SetValue(Canvas.LeftProperty, LocationX);
             SetValue(Canvas.TopProperty, LocationY);
         }
@@ -42,6 +47,7 @@ namespace Boulder_Pusher.GameObject
             Height = 50;
         }
 
+        // Push function. Called when the player collides with a boulder and its path is not obstructed
         public void Push(int x, int y)
         {
             LocationX = x * 50;

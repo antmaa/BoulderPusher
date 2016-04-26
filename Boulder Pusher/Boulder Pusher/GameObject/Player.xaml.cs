@@ -18,6 +18,11 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Boulder_Pusher.GameObject
 {
+    /// <summary>
+    /// Player GameObject. Contains the player's X and Y coordinates and location on the canvas.
+    /// Also contains the player's move functions
+    /// </summary>
+
     public sealed partial class Player : UserControl
     {
         // Player's location on the canvas (Example: 300px , 250px)
@@ -25,6 +30,7 @@ namespace Boulder_Pusher.GameObject
         public double LocationY { get; set; }
         public bool Switch { get; set; }
         public int level { get; set; }
+
         // Boolean used for determining possibility of movement
         private bool canMove;
 
@@ -32,9 +38,6 @@ namespace Boulder_Pusher.GameObject
         // Also used for calculating movement and collision
         public int X { get; set; }
         public int Y { get; set; }
-
-        private int currentframe = 0;
-        private int frameheight = 50;
 
         // Constructor
         // Sets the player entity's size
@@ -156,18 +159,27 @@ namespace Boulder_Pusher.GameObject
             List<GameObject.Wall> walls,
             List<GameObject.Exit> door)
         {
-            bool Clear = true; // Sets the possibility for movement as true unless obstructed
-            while (true)           // Begins looping through the entity lists
+            // Sets the possibility for movement as true unless obstructed
+            bool Clear = true;
+
+            // Begins looping through the entity lists
+            while (true)
             {
-                foreach (Boulder boulder in boulds) // Checks the destination for boulders
+                // Checks the destination for boulders
+                foreach (Boulder boulder in boulds)
                 {
-                    if (DestX == boulder.X && DestY == boulder.Y) // If a boulder in the list has the same coordinates as the desired location
-                    {                                             // Calls the similar function, which determines if the boulders desired location is obstructed
+                    // If a boulder in the list has the same coordinates as the desired location
+                    // Calls the similar function, which determines if the boulders desired location is obstructed
+                    if (DestX == boulder.X && DestY == boulder.Y)
+                    {
+                        // Example: Player is in 2,2, boulder in 2,3. DestX remains 2. DestY = Boulder's Y + (Boulder's Y - Player's Y)
+                        // Therefore DestY = 3 + (3 - 2) = 4
                         Clear = MoveBoulder(DestX + (DestX - X), (DestY + (DestY - Y)), boulds, terrs, walls, door);
-                        if (Clear == true) // Example: Player is in 2,2, boulder in 2,3. DestX remains 2. DestY = Boulder's Y + (Boulder's Y - Player's Y)
-                        {                  //                                                             Therefore DestY = 3 + (3 - 2) = 4
+                        if (Clear == true)
+                        {
+                            // Tells the boulder to move to said location (2,4 in the example above)
                             boulder.Push(DestX + (DestX - X), (DestY + (DestY - Y))); 
-                        } // Tells the boulder to move to said location (2,4 in the example above)
+                        }
                         return Clear;
                     } // If the path is obstructed, nothing will happen
                 }
@@ -230,7 +242,8 @@ namespace Boulder_Pusher.GameObject
                 {
                     if (PathX == terrain.X && PathY == terrain.Y)
                     {
-                        Clear = false; // The boulder cannot be pushed, when blocked by terrain
+                        // The boulder cannot be pushed, when blocked by terrain
+                        Clear = false;
                         return Clear;
                     }
                 }
@@ -239,7 +252,8 @@ namespace Boulder_Pusher.GameObject
                 {
                     if (PathX == wall.X && PathY == wall.Y)
                     {
-                        Clear = false; // The boulder cannot be pushed, when blocked by walls
+                        // The boulder cannot be pushed, when blocked by walls
+                        Clear = false;
                         return Clear;
                     }
                 }
@@ -247,7 +261,8 @@ namespace Boulder_Pusher.GameObject
                 {
                     if (PathX == exit.X && PathY == exit.Y)
                     {
-                        Clear = false; // The boulder cannot be pushed on top of the exit
+                        // The boulder cannot be pushed on top of the exit
+                        Clear = false;
                         return Clear;
                     }
                 }

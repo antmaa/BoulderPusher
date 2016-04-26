@@ -18,6 +18,10 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Boulder_Pusher.GameObject
 {
+    /// <summary>
+    /// Wall GameObject. Contains the wall's X and Y coordinates and location on the canvas.
+    /// </summary>
+
     public sealed partial class Wall : UserControl
     {
         public double LocationX { get; set; }
@@ -29,15 +33,18 @@ namespace Boulder_Pusher.GameObject
         // Relay Wall Position to Canvas
         public void UpdatePosition()
         {
-            Debug.WriteLine("Wall loc: " + Canvas.LeftProperty + " " + Canvas.TopProperty);
             SetValue(Canvas.LeftProperty, LocationX);
             SetValue(Canvas.TopProperty, LocationY);
         }
+
+        // Receives the wall's location's int[,] value. Used for determining which wall is generated
+        // Also receives the X and Y coordinates as well as the canvas location
         public Wall( int Position, int xX, int yY, int iI, int jJ )
         {
             this.InitializeComponent();
             Height = 50;
             Width = 50;
+            // Checks which wall is being created and adjust the SpriteSheetOffset to match the desired wall
             SpriteSheetOffset.Y = (Position - 4) * 50 * (-1);
             LocationX = xX;
             LocationY = yY;

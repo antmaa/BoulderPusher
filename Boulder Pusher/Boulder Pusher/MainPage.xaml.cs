@@ -19,15 +19,12 @@ using Windows.UI.Xaml.Navigation;
 namespace Boulder_Pusher
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// The main page the application starts from. Contains buttons for navigating to the GamePage,
+    /// CreditsPage and exiting the application
     /// </summary>
+
     public sealed partial class MainPage : Page
     {
-
-        // Canvas values
-        private double CanvasWidth = 550;
-        private double CanvasHeight = 550;
-
         public MainPage()
         {
             this.InitializeComponent();
@@ -36,10 +33,6 @@ namespace Boulder_Pusher
             ApplicationView.PreferredLaunchWindowingMode
                 = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             ApplicationView.PreferredLaunchViewSize = new Size(1280, 720);
-
-            // Used in Ball and Paddle
-            CanvasWidth = MyCanvas.Width;
-            CanvasHeight = MyCanvas.Height;
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)

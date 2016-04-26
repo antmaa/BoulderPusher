@@ -18,6 +18,9 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Boulder_Pusher.GameObject
 {
+    /// <summary>
+    /// Terrain GameObject. Contains the terrain's X and Y coordinates and location on the canvas.
+    /// </summary>
     public sealed partial class Terrain : UserControl
     {
         public double LocationX { get; set; }
@@ -29,7 +32,6 @@ namespace Boulder_Pusher.GameObject
         // Relay Terrain Position to Canvas
         public void UpdatePosition()
         {
-            Debug.WriteLine("Boulder loc: " + Canvas.LeftProperty + " " + Canvas.TopProperty);
             SetValue(Canvas.LeftProperty, LocationX);
             SetValue(Canvas.TopProperty, LocationY);
         }
