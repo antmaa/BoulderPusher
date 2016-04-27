@@ -81,7 +81,7 @@
                        HorizontalAlignment="Center"
                        Text="{x:Bind game.StepTime.Time, Mode=OneWay}" Foreground="White" TextAlignment="Center"/>
 
-            <Image Source="/Assets/Sprites/EntireFloor.png"
+            <Image Source="/Assets/Sprites/EntireFloor2.png"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Center" 
                    Grid.Row="3" 
