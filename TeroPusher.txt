@@ -1,0 +1,10 @@
+3	Luokat
+
+Peli sisältää MainPage luokan, johon sovellus käynnistyy. MainPagelta voi siirtyä CreditsPagelle tai GamePagelle tai sulkea sovelluksen. GamePage sisältää canvasin ja reset- sekä exit-napin. GamePage myös luo game olion joka pyörittää varsinaista peliä.
+Game luokka koostuu kentistä nimeltä pBT, jotka ovat kaksiulotteisia integer taulu-koita. Kenttien perusteella luodaan GameObject olioita, joilla on kuva, sekä X ja Y koordinaatit. Nämä oliot lisätään omiin GameObject listoihinsa, joita Player objekti käyttää liikkumisessaan. Game luokka sisältää myös MediaElementin, joka soittaa Boulder Pusherin tunnusmusiikkia. Game luokka käyttää myös StepTimeViewMode-lia, joka pitää kirjaa pelaajan siirtojen lukumäärästä ja käytetystä ajasta.
+GameObjektit perivät ominaisuuksia UserControl luokalta. Enimmäkseen UserControl luokkaa käytetään olion piirtämiseen näytölle, joten se sisältää olion kuvan. Playerin taustakoodissa on tämän lisäksi määritelty sen liikkumisfunktio. Playerin liikkumista rajoittaa toiset GameObjektit, joita ovat seinät (wall), lohkareet (boulder) ja esteet (terrain).
+Boulder olio sisältää myös Push-metodin, jota kutsutaan Player-luokasta, kun Player on liikkumassa lohkareen sisältävään ruutuun.
+Kun pelaaja pääsee viimeisen kentän Exit ruutuun, siirrytään EndPagelle. EndPage sisältää pelaajan lopulliset siirrot ja ajan. EndPagelta voidaan palata takaisin Main-Pagelle tai aloittaa peli uudelleen Reset-napilla
+
+6.2	Liikkuminen
+Liikkumisen toteuttamisessa esiintyi muutamia ongelmia, ensinnäkin sen, että moni eri olio pystyi estämään pelaajan ja lohkareiden liikkumista. Ensiksi yritimme lisätä kaikki kenttään luodut oliot samaan UserControlleja sisältävään listaan, jotta voi-simme kätevästi verrata listan jäsenien koordinaatteja pelaajan määränpäähän. Tä-mä ei kuitenkaan toiminut, sillä ohjelma luuli seiniä lohkareiksi jne. ja vikailmoituksia syöksyi joka tuutista. Lopulta päädyimme lajittelemaan kaikki samantyyppiset oliot omiin listoihinsa.
